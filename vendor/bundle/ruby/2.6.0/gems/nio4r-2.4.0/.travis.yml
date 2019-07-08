@@ -1,0 +1,29 @@
+language: ruby
+cache: bundler
+dist: xenial
+bundler_args: --without development
+
+matrix:
+  fast_finish: true
+  include:
+    - rvm: 2.3
+    - rvm: 2.4
+    - rvm: 2.5
+    - rvm: 2.6
+      env: NIO4R_PURE=true
+    - rvm: 2.6
+    - rvm: 2.6
+      os: osx
+    - rvm: truffleruby
+    - rvm: truffleruby
+      env: NIO4R_PURE=true
+    - rvm: jruby
+      env: JRUBY_OPTS="--debug -X+O --dev -J-Djruby.launch.inproc=true -J-Xmx1024M"
+    - rvm: jruby-head
+      env: JRUBY_OPTS="--debug -X+O --dev -J-Djruby.launch.inproc=true -J-Xmx1024M"
+    - rvm: ruby-head
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: truffleruby
+    - rvm: jruby-head
+    - rvm: jruby

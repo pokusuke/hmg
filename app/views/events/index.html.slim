@@ -1,0 +1,12 @@
+h1 イベント
+table
+  thead
+    th イベント名
+    th 開催日
+    th 主宰者
+  tbody
+    - @events.each do |event|
+      tr
+        td = link_to event.event_name,event_path(event)
+        td = event.event_date
+        td = event.user.name

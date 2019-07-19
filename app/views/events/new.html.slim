@@ -1,0 +1,9 @@
+h1 イベント登録
+= form_with model:@event,local:true do |f|
+    .form-group
+      = f.label :event_name
+      = f.text_field :event_name
+    .form-group
+      = f.label :event_date
+      = f.date_select :event_date
+    = f.submit "イベント登録"

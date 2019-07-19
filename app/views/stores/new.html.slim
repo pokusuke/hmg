@@ -1,0 +1,7 @@
+h1 出店情報の新規作成
+= form_with model:@store,local:true do |f|
+  .form_group
+    = f.hidden_field :event_app_id, :value=>@event_app_id
+    = f.label '出店概要'
+    = f.text_area :store_desc
+  = f.submit "登録"

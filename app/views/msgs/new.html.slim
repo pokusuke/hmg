@@ -1,0 +1,12 @@
+h1 メッセージ
+ul
+  - @msgs.each do |msg|
+    li= "#{msg.sender.name}: #{msg.msg}"
+
+=form_with model: Msg.new,url: "/msgs/#{params[:id]}" do |f|
+  =f.label 'メッセージ'
+  br
+  =f.text_area :msg
+  br
+  br
+  =f.submit "送信"

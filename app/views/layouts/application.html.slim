@@ -1,0 +1,16 @@
+html lang="ja"
+  head
+    meta charset="UTF-8"/
+    meta name="viewport" content="width=device-width, initial-scale=1.0"/
+    meta http-equiv="X-UA-Compatible" content="ie=edge"/
+    title Handmade Garden
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    - current_user
+    p= "#{@current_user.name}でログイン中" if @current_user!=nil
+    = render 'layouts/header'
+    = yield

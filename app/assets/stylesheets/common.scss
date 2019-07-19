@@ -1,0 +1,33 @@
+nav{
+  li{
+    display:inline-block;
+    margin-right:10px;
+    a{
+      text-decoration: none;
+      color:#333;
+    }
+    a:hover{
+      color:blue;
+      text-decoration: underline;
+    }
+  }
+}
+
+table{
+  border-collapse: collapse;
+  th,td{
+    border:1px solid #aaa;
+    padding:3px;
+  }
+}
+
+.event_list{
+  border:1px solid #333;
+  dt,dd{
+    padding:5px;
+  }
+  dt{
+    text-align: center;
+    border-bottom:1px solid #333;
+  }
+}

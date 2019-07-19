@@ -1,0 +1,12 @@
+h1 ユーザ一覧
+table
+  thead
+    th = User.human_attribute_name(:name)
+    th = User.human_attribute_name(:nick_name)
+    th = User.human_attribute_name(:created_at)
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.name
+        td = user.nick_name
+        td = user.created_at

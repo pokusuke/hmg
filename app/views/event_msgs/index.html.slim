@@ -1,0 +1,12 @@
+h1 イベントメッセージ
+ul
+  - @event_msgs.each do |event_msg|
+    li= "#{event_msg.user.name}: #{event_msg.msg}"
+    =link_to "コメント",:controller=>'event_msg_reps',:action=>'new',event_msg_id: event_msg.id
+
+= form_with model:@event_msg,local:true do |f|
+    .form-group
+      = f.hidden_field :event_id, :value=>@event_id
+      = f.label 'メッセージ入力'
+      = f.text_area :msg
+    = f.submit "メッセージを送信"

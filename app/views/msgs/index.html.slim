@@ -1,0 +1,5 @@
+h1 メッセージ履歴ユーザ
+p= link_to 'ユーザ検索','/msgs/select_user'
+ul
+  - @msg_users.each do |msg_user|
+    li= link_to msg_user.relation.name , "/msgs/#{msg_user.relation.id}"

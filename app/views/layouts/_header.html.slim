@@ -1,13 +1,16 @@
-nav
-  ul
-  - if @current_user!=nil
-      li= link_to 'イベント一覧',events_path
-      li= link_to '参加イベント',event_apps_path
-      li= link_to 'プロフィール編集',edit_user_path(current_user.id)
-      li= link_to 'メッセージ',msgs_index_path
-      li= link_to 'ログアウト',logout_path,method: :delete
-  - else
-      li= link_to 'イベント一覧',events_path
-      li= link_to 'ログイン',login_path
 
-hr
+    h1= link_to "Handmade Garden",home_path
+    - current_user
+    p= "#{@current_user.name}でログイン中" if @current_user!=nil
+    div#menu= link_to '','javascript:void(0);'
+    nav.header-nav
+        ul
+            - if @current_user!=nil
+                li= link_to 'イベント一覧',events_path
+                li= link_to '参加イベント',event_apps_path
+                li= link_to 'プロフィール編集',edit_user_path(current_user.id)
+                li= link_to 'メッセージ',msgs_index_path
+                li= link_to 'ログアウト',logout_path,method: :delete
+            - else
+                li= link_to 'イベント一覧',events_path
+                li= link_to 'ログイン',login_path

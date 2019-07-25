@@ -1,7 +1,10 @@
-h1 Sign in
-= form_for(:session,url:login_path) do |f|
-  .form_group
-    = f.label :name
-    = f.text_field :name
-  = f.submit "ログイン"
-p= link_to '新規ユーザ登録','/users/new'
+section.content
+  h2.page-title ログイン
+  br
+  = form_for(:session,url:login_path) do |f|
+    .form_group
+      = f.label :ユーザ名
+      br
+      = f.text_field :name
+    = f.submit "ログイン"
+  p.sign-up= link_to '新規ユーザ登録','/users/new',{:class => "btn-min"}

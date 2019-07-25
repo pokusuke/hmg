@@ -1,9 +1,12 @@
-h1 イベント編集
-= form_with model:@event,local:true do |f|
+div.content
+  h2.page-title イベント編集
+  = form_with model:@event,local:true do |f|
     .form-group
-      = f.label :event_name
+      = f.label "イベント名"
+      br
       = f.text_field :event_name
     .form-group
-      = f.label :event_date
-      = f.date_select :event_date
+      = f.label "開催日"
+      br
+      = f.date_select :event_date,use_month_numbers: true,date_separator: '/'
     = f.submit "イベント登録"

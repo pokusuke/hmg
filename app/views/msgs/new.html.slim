@@ -1,12 +1,13 @@
-h1 メッセージ
-ul
+ul.msg-list#chat-index
   - @msgs.each do |msg|
-    li= "#{msg.sender.name}: #{msg.msg}"
+    li
+      |
+        #{msg.sender.name}:<br>
+        <span class="msg-content">#{msg.msg}</span>
 
 =form_with model: Msg.new,url: "/msgs/#{params[:id]}" do |f|
   =f.label 'メッセージ'
   br
-  =f.text_area :msg
-  br
+  =f.text_area :msg,{class:"msg"}
   br
   =f.submit "送信"

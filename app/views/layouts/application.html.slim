@@ -3,6 +3,7 @@ html lang="ja"
     meta charset="UTF-8"/
     meta name="viewport" content="width=device-width, initial-scale=1.0"/
     meta http-equiv="X-UA-Compatible" content="ie=edge"/
+    link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet"
     title Handmade Garden
     = csrf_meta_tags
     = csp_meta_tag
@@ -10,7 +11,9 @@ html lang="ja"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    - current_user
-    p= "#{@current_user.name}でログイン中" if @current_user!=nil
-    = render 'layouts/header'
-    = yield
+    .header
+      = render 'layouts/header'
+    .main
+      = yield
+    .footer
+      = render 'layouts/footer'

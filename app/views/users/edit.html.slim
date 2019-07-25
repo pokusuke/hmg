@@ -1,9 +1,18 @@
-h1 プロフィール編集
-= form_with model:@user,local:true do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name
-  .form-group
-    = f.label :nick_name
-    = f.text_field :nick_name
-  = f.submit "ユーザ登録"
+div.content
+  h2.page-title プロフィール編集
+  = form_with model:@user,local:true,multipart:true do |f|
+    .form-group
+      = f.label "名前"
+      br
+      = f.text_field :name
+    .form-group
+      = f.label "ニックネーム"
+      br
+      = f.text_field :nick_name
+    .form-group
+      = image_tag @user.avatar_path.url if @user.avatar_path?
+      br
+      = f.label "プロフィール画像"
+      br
+      = f.file_field :avatar_path
+    = f.submit "保存"

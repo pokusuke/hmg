@@ -1,12 +1,22 @@
-h1 イベント
-table
-  thead
-    th イベント名
-    th 開催日
-    th 主宰者
-  tbody
-    - @events.each do |event|
-      tr
-        td = link_to event.event_name,event_path(event)
-        td = event.event_date
-        td = event.user.name
+section.search-config
+  h2.page-title 神奈川のイベント
+  = form_with local:true do |f|
+      .form-group
+        = f.label :開催日で絞り込み
+        br
+        = f.date_select :event_date_from, use_month_numbers: true,date_separator: '/'
+        br 
+        span 〜
+        br
+        = f.date_select :event_date_to, use_month_numbers: true,date_separator: '/'
+      .form
+      = f.submit "絞り込み"
+section
+  -@events.each do |event|
+    dl.event
+      dt
+        p= event.event_name
+      dd
+        p= "開催日時: #{event.event_date.strftime('%Y年%m月%d日')}"
+        p= "主催者：　#{event.user.name}"
+        p= link_to '詳細',event_path(event)

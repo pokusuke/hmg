@@ -1,14 +1,18 @@
-h1 参加イベント一覧
-p= link_to 'イベントを新規作成',new_event_path
-hr
--@event_apps.each do |event_app|
-  dl.event_list
-    dt
-      p= event_app.event.event_name
-    dd
-      p= "開催日時: #{event_app.event.event_date}"
-      p= "主催者：　#{event_app.event.user.name}"
-      p= link_to '詳細',event_path(event_app.event)
-      p= link_to 'イベントチャット',:controller=>'event_msgs',:action=>'index',event_id: event_app.event_id
-      p= link_to '出店情報を編集する',:controller=>'stores',:action=>'index',event_app_id: event_app.id
-      p= link_to 'イベントを編集する',edit_event_path(event_app.event)
+h2.page-title 参加イベント一覧
+
+
+section
+  -@event_apps.each do |event_app|
+    dl.event
+      dt
+        p= event_app.event.event_name
+      dd
+        p= "開催日時: #{event_app.event.event_date}"
+        p= "主催者：　#{event_app.event.user.name}"
+        p= link_to '詳細',event_path(event_app.event),{:class=>"btn-min"}
+        p= link_to 'イベントチャット',{:controller=>'event_msgs',:action=>'index',event_id: event_app.event_id},{:class=>'btn-min'}
+        p= link_to '出店情報を編集する',{:controller=>'stores',:action=>'index',event_app_id: event_app.id},{:class=>"btn-min"}
+        - if event_app.event.user.id == current_user.id
+            p= link_to 'イベントを編集する',edit_event_path(event_app.event),:class=>"btn-min"
+br        
+p.event-new= link_to 'イベントを新規作成',new_event_path, {:class => "btn"}

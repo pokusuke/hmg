@@ -1,9 +1,12 @@
-h1 ユーザ登録
-= form_with model:@user,local:true do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name
-  .form-group
-    = f.label :nick_name
-    = f.text_field :nick_name
-  = f.submit "ユーザ登録"
+section.content
+  h2.page-title ユーザ登録
+  = form_with model:@user,local:true do |f|
+    .form-group
+      = f.label "ユーザ名"
+      br
+      = f.text_field :name
+    .form-group
+      = f.label "ニックネーム"
+      br
+      = f.text_field :nick_name
+    = f.submit "登録"

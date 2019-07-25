@@ -5,7 +5,10 @@ class MsgsController < ApplicationController
   end
   
   def select_user
-   
+    if request.referer&.include?("/msgs/select_user")
+    else
+      session[:query_users]=nil
+    end
   end
 
   def query_user
@@ -13,6 +16,7 @@ class MsgsController < ApplicationController
     query_users = query
     session[:query_users] = query
     redirect_to "/msgs/select_user"
+    #render action: "select_user"
   end
 
   def new

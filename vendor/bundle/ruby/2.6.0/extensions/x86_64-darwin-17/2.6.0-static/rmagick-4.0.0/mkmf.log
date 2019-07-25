@@ -1,0 +1,79 @@
+find_executable: checking for brew... -------------------- yes
+
+--------------------
+
+find_executable: checking for clang... -------------------- yes
+
+--------------------
+
+find_executable: checking for pkg-config... -------------------- yes
+
+--------------------
+
+
+Warning: Found more than one ImageMagick installation. This could cause problems at runtime.
+ - ImageMagick
+ - ImageMagick
+ - ImageMagick
+ - ImageMagick
+ - ImageMagick
+ - ImageMagick
+ - ImageMagick
+ - ImageMagick
+
+configure_compile_options: checking for outdated ImageMagick version (<= 6.7.7)... -------------------- no
+
+Detected ImageMagick version: 7.0.8
+--------------------
+
+have_macro: checking for __GNUC__... -------------------- yes
+
+" clang -o conftest -I/Users/ogushiyosuke/.rbenv/versions/2.6.3/include/ruby-2.6.0/x86_64-darwin17 -I/Users/ogushiyosuke/.rbenv/versions/2.6.3/include/ruby-2.6.0/ruby/backward -I/Users/ogushiyosuke/.rbenv/versions/2.6.3/include/ruby-2.6.0 -I.  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.0.8-50/include/ImageMagick-7  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.0.8-50/include/ImageMagick-7 conftest.c  -L. -L/Users/ogushiyosuke/.rbenv/versions/2.6.3/lib  -L/usr/local/Cellar/imagemagick/7.0.8-50/lib -lMagickCore-7.Q16HDRI    -L/usr/local/Cellar/imagemagick/7.0.8-50/lib -lMagickCore-7.Q16HDRI  -lruby.2.6-static -framework Security -framework Foundation -lpthread -ldl -lobjc   "
+ld: warning: text-based stub file /System/Library/Frameworks//Security.framework/Security.tbd and library file /System/Library/Frameworks//Security.framework/Security are out of sync. Falling back to library file for linking.
+ld: warning: text-based stub file /System/Library/Frameworks//Foundation.framework/Foundation.tbd and library file /System/Library/Frameworks//Foundation.framework/Foundation are out of sync. Falling back to library file for linking.
+ld: warning: text-based stub file /System/Library/Frameworks//CoreFoundation.framework/Versions/A/CoreFoundation.tbd and library file /System/Library/Frameworks//CoreFoundation.framework/Versions/A/CoreFoundation are out of sync. Falling back to library file for linking.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+" clang -I/Users/ogushiyosuke/.rbenv/versions/2.6.3/include/ruby-2.6.0/x86_64-darwin17 -I/Users/ogushiyosuke/.rbenv/versions/2.6.3/include/ruby-2.6.0/ruby/backward -I/Users/ogushiyosuke/.rbenv/versions/2.6.3/include/ruby-2.6.0 -I.  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.0.8-50/include/ImageMagick-7  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.0.8-50/include/ImageMagick-7   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: #ifndef __GNUC__
+5: # error
+6: |:/ === __GNUC__ undefined === /:|
+7: #endif
+/* end */
+
+--------------------
+
+assert_minimum_ruby_version!: checking for Ruby version >= 2.3.0... -------------------- yes
+
+--------------------
+
+have_header: checking for magick/MagickCore.h... -------------------- no
+
+" clang -E -I/Users/ogushiyosuke/.rbenv/versions/2.6.3/include/ruby-2.6.0/x86_64-darwin17 -I/Users/ogushiyosuke/.rbenv/versions/2.6.3/include/ruby-2.6.0/ruby/backward -I/Users/ogushiyosuke/.rbenv/versions/2.6.3/include/ruby-2.6.0 -I.  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.0.8-50/include/ImageMagick-7  -Xpreprocessor -fopenmp -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/7.0.8-50/include/ImageMagick-7 -std=gnu99  conftest.c -o conftest.i"
+conftest.c:3:10: fatal error: 'magick/MagickCore.h' file not found
+#include <magick/MagickCore.h>
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <magick/MagickCore.h>
+/* end */
+
+--------------------
+
+ERROR: Can't install RMagick 4.0.0. Can't find magick/MagickCore.h.

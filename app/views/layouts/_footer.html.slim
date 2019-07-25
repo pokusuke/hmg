@@ -1,0 +1,16 @@
+footer
+    address
+        | Handmade Garden
+javascript:
+    $(function(){
+        var $ftr = $('footer');
+        if( window.innerHeight > $ftr.offset().top + $ftr.outerHeight() ){
+          $ftr.attr({'style': 'position:fixed; top:' + (window.innerHeight - $ftr.outerHeight()) +'px;' });
+        }
+    });
+    $(function(){
+        $("#menu a").on('click',function(){
+            $(".header-nav").slideToggle(300);
+            //$(".header-nav").animate({width:'toggle'});
+        });
+    });

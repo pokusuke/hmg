@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'chat/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'events#index'  
+  root 'home#index'  
   #get '/users',to:'users#index'
   #get '/users/new',to:'users#new'
   #post '/users',to:'users#create'
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
 
   get '/msgs/:id',to:'msgs#new'
   post 'msgs/:id',to:'msgs#create'
+
+  get '/home',to:'home#index'
  resources :events
 
 

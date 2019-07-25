@@ -1,16 +1,16 @@
-h1 イベント詳細
-table
+h2.page-title イベント詳細
+table.event-show
   tr
     th イベント名
     td= @event.event_name
   tr
     th 開催日時
-    td= @event.event_date
+    td= @event.event_date.strftime('%Y年%m月%d日')
   tr
-    th 主宰者
+    th 主催者
     td= @event.user.name
 br
 - if current_user==nil || (current_user.id != @event.user.id and !is_apply_event?)
-  = form_with model:@event,url:'/event_apps',method: :post,local:true do |f|
+  = form_with model:@event,url:'/event_apps',method: :post,local:true, class: 'event-detail' do |f|
     = f.hidden_field :event_id, :value=>@event.id
-    = f.submit '応募する'
+    = f.submit '応募する' , {class: "submit"}

@@ -1,9 +1,11 @@
-h1 出店情報
-- if @store.nil?
-  p= link_to '新規作成',:controller=>'stores',:action=>'new',event_app_id: params[:event_app_id]
-- else
-  = form_with model:@store,local:true,url:'stores/edit' do |f|
-    .form_group
-      = f.label '出店情報'
-      = f.text_area :store_desc
-    = f.submit "登録"
+section.content
+  h2.page-title 出店情報
+  - if @store.nil?
+    p= link_to '新規作成',:controller=>'stores',:action=>'new',event_app_id: params[:event_app_id]
+  - else
+    = form_with model:@store,local:true,url:'stores/edit' do |f|
+      .form_group
+        = f.label '出店情報'
+        br
+        = f.text_area :store_desc
+      = f.submit "登録"

@@ -6,7 +6,15 @@ section.content
       br
       = f.text_field :name
     .form-group
-      = f.label "ニックネーム"
+      = f.label "メールアドレス"
       br
-      = f.text_field :nick_name
+      = f.text_field :email
+    .form-group
+      = f.label "パスワード"
+      br
+      = f.password_field :password
+    .form-group
+      = f.label "パスワード確認"
+      br
+      = f.password_field :password_confirmation
     = f.submit "登録"

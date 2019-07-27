@@ -3,8 +3,12 @@ section.content
   br
   = form_for(:session,url:login_path) do |f|
     .form_group
-      = f.label :ユーザ名
+      = f.label "メールアドレス"
       br
-      = f.text_field :name
+      = f.text_field :email
+    .form_group
+      = f.label "パスワード"
+      br
+      = f.password_field :password  
     = f.submit "ログイン"
   p.sign-up= link_to '新規ユーザ登録','/users/new',{:class => "btn-min"}

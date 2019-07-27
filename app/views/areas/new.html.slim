@@ -1,0 +1,8 @@
+section
+  h2 エリアの作成
+  = form_with model:@area,local:true do |f|
+    .form_group
+      = f.label 'エリア名'
+      br
+      = f.text_field :area_name
+    = f.submit "登録"

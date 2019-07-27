@@ -29,6 +29,11 @@ input[type="text"]{
   height:30px;
 
 }
+input[type="password"]{
+  width:300px;
+  height:30px;
+
+}
 input.submit{
   height:60px;
   font-size:30px;
@@ -268,5 +273,36 @@ table{
   dt{
     text-align: center;
     border-bottom:1px solid #333;
+  }
+}
+
+
+.acc{
+  cursor: pointer;
+  display:block;
+
+  .area{
+    border-bottom:1px solid #aaa;
+    text-align: center;
+  }
+  li{
+    list-style-type: none;
+    padding:5px;
+    a{
+      text-decoration: none;
+      transition: 0.3s;
+      color:skyblue;
+      display:block;
+      padding:10px;
+      text-align: center;
+      &:hover{
+        color:#fff;
+        background-color:#666;
+      }
+    }
+  }
+  ul{
+    display:none;
+    padding:0;
   }
 }

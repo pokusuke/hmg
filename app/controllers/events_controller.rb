@@ -1,7 +1,12 @@
 class EventsController < ApplicationController
   before_action :logged_in_user, only:[:new,:create,:destroy]
   def index
-    @events = Event.all
+    if params[:pref_id]
+      @pref = Pref.find(params[:pref_id])
+      @events = Event.all
+    else 
+      @events = Event.all
+    end
   end
 
   def new

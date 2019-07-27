@@ -1,6 +1,10 @@
 section.search-config
-  h2.page-title 神奈川のイベント
-  = form_with local:true do |f|
+  - if @pref
+    h2.page-title= "#{@pref.pref_name}のイベント"
+  - else
+    h2.page-title= "全国のイベント"
+  = form_with local:true,method: :get do |f|
+      = f.hidden_field :pref_id, :value=>@pref.id if @pref
       .form-group
         = f.label :開催日で絞り込み
         br

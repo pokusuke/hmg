@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_123002) do
+ActiveRecord::Schema.define(version: 2019_07_27_082914) do
+
+  create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "area_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "event_apps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id"
@@ -57,6 +63,14 @@ ActiveRecord::Schema.define(version: 2019_07_24_123002) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "prefs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "pref_id"
+    t.string "pref_name"
+    t.integer "area_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "event_id"
     t.integer "event_app_id"
@@ -72,6 +86,9 @@ ActiveRecord::Schema.define(version: 2019_07_24_123002) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar_path"
+    t.string "password_digest"
+    t.string "email"
+    t.string "prof"
   end
 
 end

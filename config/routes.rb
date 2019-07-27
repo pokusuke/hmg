@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   #post '/users',to:'users#create'
   #get '/users/:id/edit',to:'users#edit'
   resources :users
+  resources :areas
+  resources :prefs
 
   get '/login', to:'sessions#new'
   post '/login',to:'sessions#create'

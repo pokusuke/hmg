@@ -14,3 +14,8 @@ javascript:
             //$(".header-nav").animate({width:'toggle'});
         });
     });
+    $(function(){
+        $('.acc p').click(function(){
+            $(this).next('ul').slideToggle();
+        });
+    });

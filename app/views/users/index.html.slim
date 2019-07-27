@@ -3,10 +3,15 @@ table
   thead
     th = User.human_attribute_name(:name)
     th = User.human_attribute_name(:nick_name)
+    th = User.human_attribute_name(:email)
+    th = User.human_attribute_name(:avatar_path)
     th = User.human_attribute_name(:created_at)
+    
   tbody
     - @users.each do |user|
       tr
         td = user.name
         td = user.nick_name
+        td = user.email
+        td = user.avatar_path
         td = user.created_at

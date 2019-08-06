@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_27_082914) do
+ActiveRecord::Schema.define(version: 2019_08_06_104957) do
 
   create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "area_name"
@@ -47,6 +47,20 @@ ActiveRecord::Schema.define(version: 2019_07_27_082914) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.boolean "event_published_flg"
+    t.boolean "event_recruiting_flg"
+    t.integer "pref_id"
+    t.string "city"
+    t.string "place_detail"
+    t.text "event_detail"
+    t.date "event_recruit_start_date"
+    t.date "event_recruit_end_date"
+    t.integer "event_recruit_number"
+    t.integer "event_entrance_fee"
+    t.string "photo_url1"
+    t.string "photo_url2"
+    t.string "photo_url3"
+    t.string "photo_url4"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -61,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_07_27_082914) do
     t.string "msg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo_url"
   end
 
   create_table "prefs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

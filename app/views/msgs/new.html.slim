@@ -1,13 +1,21 @@
 ul.msg-list#chat-index
   - @msgs.each do |msg|
-    li
-      |
-        #{msg.sender.name}:<br>
-        <span class="msg-content">#{msg.msg}</span>
+    -if msg.photo_url.url
+      li
+        |
+          #{msg.sender.name}:<br>
+          <span class="msg-content">#{msg.msg}<br><img src="#{msg.photo_url.url}"></span>
+    - else
+      li
+        |
+          #{msg.sender.name}:<br>
+          <span class="msg-content">#{msg.msg}</span>
 
 =form_with model: Msg.new,url: "/msgs/#{params[:id]}" do |f|
   =f.label 'メッセージ'
   br
   =f.text_area :msg,{class:"msg"}
   br
-  =f.submit "送信"
+  =f.label "画像"
+  =f.file_field :photo_url ,{id:"file_input"}
+  =f.submit "送信",{id:"msg-submit"}

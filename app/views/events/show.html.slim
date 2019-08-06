@@ -9,8 +9,39 @@ table.event-show
   tr
     th 主催者
     td= @event.user.name
+  tr
+    th 開催場所
+    td= "#{@event.pref.pref_name} #{@event.city} #{@event.place_detail}"
+  tr
+    th 出店募集期間
+    td= "#{@event.event_recruit_start_date.strftime('%Y年%m月%d日')} 〜 #{@event.event_recruit_end_date.strftime('%Y年%m月%d日')}"
+  tr
+    th 開催概要
+    td= @event.event_detail
+  tr
+    th 募集人数
+    td= @event.event_recruit_number
+  tr 
+    th 参加費
+    td= @event.event_entrance_fee
+
+
+
+#map
+
+
 br
 - if current_user==nil || (current_user.id != @event.user.id and !is_apply_event?)
   = form_with model:@event,url:'/event_apps',method: :post,local:true, class: 'event-detail' do |f|
     = f.hidden_field :event_id, :value=>@event.id
     = f.submit '応募する' , {class: "submit"}
+
+javascript:
+  var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+  }
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1FMROrjTCfk4_lrVxxWnVpgfl9gKKR_4&callback=initMap" async defer></script>

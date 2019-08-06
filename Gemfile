@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'slim-rails'
 gem 'jquery-rails'
 gem 'carrierwave','~> 1.0'
+gem 'carrierwave-data-uri'
 gem 'mini_magick'
 
 group :development, :test do

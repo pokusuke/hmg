@@ -10,6 +10,15 @@ div.content
       br
       = f.text_field :nick_name
     .form-group
+      = f.label "email"
+      br
+      = f.text_field :email      
+    .form-group
+      = f.label "自己紹介"
+      br
+      = f.text_area :prof,:class => 'desc'
+
+    .form-group
       = image_tag @user.avatar_path.url if @user.avatar_path?
       br
       = f.label "プロフィール画像"

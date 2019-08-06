@@ -20,6 +20,8 @@ class EventsController < ApplicationController
         event = Event.new(event_params)
         event.user_id = current_user.id
         event.event_date = Time.zone.local(params[:event]["event_date(1i)"].to_i,params[:event]["event_date(2i)"].to_i,params[:event]["event_date(3i)"].to_i)
+        event.event_recruit_start_date = Time.zone.local(params[:event]["event_recruit_start_date(1i)"].to_i,params[:event]["event_recruit_start_date(2i)"].to_i,params[:event]["event_recruit_start_date(3i)"].to_i)
+        event.event_recruit_end_date = Time.zone.local(params[:event]["event_recruit_end_date(1i)"].to_i,params[:event]["event_recruit_end_date(2i)"].to_i,params[:event]["event_recruit_end_date(3i)"].to_i)
         event.save!
 
         #イベント参加者に作成者を追加
@@ -29,6 +31,8 @@ class EventsController < ApplicationController
         event_app.save!
       }
     rescue Exception => e
+      p e
+      
     end
     redirect_to events_path
   end
@@ -52,6 +56,21 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:event_name,:event_date)
+      params.require(:event).permit(
+        :event_name,
+        :event_date,
+        :pref_id,
+        :city,
+        :place_detail,
+        :event_recruit_start_date,
+        :event_recruit_end_date,
+        :event_recruit_number,
+        :event_entrance_fee,
+        :event_detail,
+        :photo_url1,
+        :photo_url2,
+        :photo_url3,
+        :photo_url4 
+      )
     end
 end

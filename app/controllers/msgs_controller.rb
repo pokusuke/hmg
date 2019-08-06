@@ -22,7 +22,7 @@ class MsgsController < ApplicationController
   def new
     @msg = Msg.new 
     cid = current_user.id
-    @msgs = Msg.where("(sender_id = #{params[:id]} and reciever_id= #{cid}) or (sender_id = #{cid} and reciever_id = #{params[:id]})")
+    @msgs = Msg.where("(sender_id = #{params[:id].split("&")[0]} and reciever_id= #{cid}) or (sender_id = #{cid} and reciever_id = #{params[:id].split("&")[0]})")
   end
 
   def create

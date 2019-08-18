@@ -1,6 +1,10 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+/*変数*/
+$link_color: #2980b9;
+
+
 body,p,h1,h2,h3,dl,dd,dt,ul,li{
   margin:0;
   padding:0;
@@ -105,7 +109,7 @@ body{
   .btn{
     text-decoration: none;
     text-align: center;
-    background-color:#16A6B6;
+    background-color: $link_color;
     color:#fff;
     width:300px;
     height:50px;
@@ -258,9 +262,18 @@ form{
     background-color:#f7f7f7;
     text-align: left;
     padding:5px;
+    width:20%;
   }
   td{
     padding:5px;
+    
+  }
+  a{
+    text-decoration: none;
+    color: $link_color;
+    &:hover{
+      opacity:0.8;
+    }
   }
 
 }

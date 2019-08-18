@@ -17,6 +17,7 @@ section
           li= link_to '詳細',event_path(event_app.event),{:class=>"btn-min"}
           li= link_to 'チャット',{:controller=>'event_msgs',:action=>'index',event_id: event_app.event_id},{:class=>'btn-min'}
           li= link_to '出店情報',{:controller=>'stores',:action=>'index',event_app_id: event_app.id},{:class=>"btn-min"}
+          
           - if event_app.event.user.id == current_user.id
             li= link_to 'イベント編集',edit_event_path(event_app.event),:class=>"btn-min"
 br        

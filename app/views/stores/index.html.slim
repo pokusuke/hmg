@@ -3,7 +3,12 @@ section.content
   - if @store.nil?
     p= link_to '新規作成',:controller=>'stores',:action=>'new',event_app_id: params[:event_app_id]
   - else
-    = form_with model:@store,local:true,url:'stores/edit' do |f|
+    = form_with method: :post, model:@store, local:true, url:'stores/store_edit' do |f|
+      = f.hidden_field :store_id, :value=>@store.id
+      .form_group
+        = f.label '出店名'
+        br
+        = f.text_field :name
       .form_group
         = f.label '出店情報'
         br

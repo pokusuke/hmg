@@ -1,0 +1,6 @@
+h2.page-title= @user.nick_name
+p= image_tag @user.avatar_path.url if @user.avatar_path?
+table.event-show
+  tr
+    th プロフィール
+    td= simple_format(@user.prof)

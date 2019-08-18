@@ -38,7 +38,7 @@ section.event-result
             .list-desc
               p= "開催日時: #{I18n.l event.event_date, format: :full_date}"
               p= "開催場所: #{event.pref.pref_name}"
-              p= "主催者：　#{event.user.name}"
+              p= "主催者：　#{event.user.nick_name}"
             .detail-icon
               = icon 'fas','chevron-right'
 

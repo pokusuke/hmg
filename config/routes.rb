@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   get '/stores',to:'stores#index'
   post '/stores',to:'stores#create'
   get '/stores/new',to:'stores#new'
-  post '/stores/edit',to:'stores#update'
+  post '/stores/store_edit',to:'stores#store_edit'
+  get 'stores/show/:id', to:'stores#show'
 
   get '/event_msg_reps/new',to:'event_msg_reps#new'
   post '/event_msg_reps',to:'event_msg_reps#create'

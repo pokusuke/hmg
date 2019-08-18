@@ -10,7 +10,7 @@ table.event-show
     td= I18n.l @event.event_date, format: :full_date
   tr
     th 主催者
-    td= @event.user.name
+    td= link_to @event.user.nick_name,{:controller=>'users',:action=>'show',id: @event.user}
   tr
     th 開催場所
     td= "#{@event.pref.pref_name} #{@event.city} #{@event.place_detail}"
@@ -30,8 +30,10 @@ table.event-show
     th 出店者
     td
       - @event.event_apps.each do |event_app|
-          span.event-app=link_to event_app.user.name,'#'
-
+          -if event_app.stores.present?
+            span.event-app=link_to event_app.user.nick_name,{:controller=>'stores',:action=>'show',id: event_app.stores[0]}
+          -else
+            span.event-app=event_app.user.nick_name 
 
 
 #map

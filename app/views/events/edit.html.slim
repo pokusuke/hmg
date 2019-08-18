@@ -1,5 +1,6 @@
 div.content
   h2.page-title イベント編集
+  = render partial: 'layouts/flash', locals:{ store: @store}
   = form_with model:@event,local:true do |f|
     .form-group
       = f.label "イベント名"

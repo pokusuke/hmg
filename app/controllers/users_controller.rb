@@ -25,9 +25,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    user.update_attributes(user_params)
-
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = '保存しました'
+      redirect_to edit_user_path(@user)
+    else
+      render 'edit'
+    end
+  
   end
   
   def destroy

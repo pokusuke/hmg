@@ -1,5 +1,6 @@
 div.content
   h2.page-title プロフィール編集
+  = render partial: 'layouts/flash', locals:{ user: @user}
   = form_with model:@user,local:true,multipart:true do |f|
     .form-group
       = f.label "名前"
@@ -19,9 +20,10 @@ div.content
       = f.text_area :prof,:class => 'desc'
 
     .form-group
+      = f.label "プロフィール画像"
+      br
       = image_tag @user.avatar_path.url if @user.avatar_path?
       br
-      = f.label "プロフィール画像"
       br
       = f.file_field :avatar_path
     = f.submit "保存"

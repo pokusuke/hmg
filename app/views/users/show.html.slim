@@ -1,6 +1,6 @@
 h2.page-title= @user.nick_name
-p= image_tag @user.avatar_path.url if @user.avatar_path?
+p.prof-img= image_tag @user.avatar_path.url,:class => 'img-prof-thum-l' if @user.avatar_path?
 table.event-show
   tr
-    th プロフィール
-    td= simple_format(@user.prof)
+    th 自己紹介
+    td= simple_format(text_url_to_link(@user.prof))

@@ -3,6 +3,7 @@ section.content
   - if @store.nil?
     p= link_to '新規作成',:controller=>'stores',:action=>'new',event_app_id: params[:event_app_id]
   - else
+    = render partial: 'layouts/flash', locals:{ store: @store}
     = form_with method: :post, model:@store, local:true, url:'stores/store_edit' do |f|
       = f.hidden_field :store_id, :value=>@store.id
       .form_group

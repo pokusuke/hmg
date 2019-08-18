@@ -5,4 +5,4 @@ table.event-show
     td= link_to @store.event_app.user.name,{:controller=>'users',:action=>'show',id: @store.event_app.user}
   tr
     th 出店概要
-    td= simple_format(@store.store_desc)
+    td= text_url_to_link(simple_format(@store.store_desc))

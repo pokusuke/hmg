@@ -27,6 +27,8 @@ class StoresController < ApplicationController
     store.name = params[:store][:name]
     store.store_desc = params[:store][:store_desc]
     store.save!
+    flash[:success] = "保存しました"
+    redirect_to request.referer
   end
 
   def show

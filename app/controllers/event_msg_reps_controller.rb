@@ -5,6 +5,7 @@ class EventMsgRepsController < ApplicationController
     @event_msg_reps = EventMsgRep.where(event_msg_id: params[:event_msg_id])
     @event_msg_rep = EventMsgRep.new
     @event_msg_id = params[:event_msg_id]
+    @event_msg = EventMsg.find(@event_msg_id)
   end
 
   def create

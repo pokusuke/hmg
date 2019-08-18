@@ -1,15 +1,21 @@
 ul.msg-list#chat-index
   - @msgs.each do |msg|
     -if msg.photo_url.url
-      li
+      li.msg-item
         |
-          #{msg.sender.name}:<br>
-          <span class="msg-content">#{msg.msg}<br><img src="#{msg.photo_url.url}"></span>
+          <div class="msg-sender-img"><img src="#{msg.sender.avatar_path}"></div>
+          <div class="msg-container">
+            #{msg.sender.nick_name}:<br>
+            <span class="msg-content">#{msg.msg}<br><img src="#{msg.photo_url.url}"></span>
+          </div>
     - else
-      li
+      li.msg-item
         |
-          #{msg.sender.name}:<br>
-          <span class="msg-content">#{msg.msg}</span>
+          <div class="msg-sender-img"><img src="#{msg.sender.avatar_path}"></div>
+          <div class="msg-container">
+            #{msg.sender.nick_name}:<br>
+            <span class="msg-content">#{msg.msg}</span>
+          </div>
 
 =form_with model: Msg.new,url: "/msgs/#{params[:id]}" do |f|
   =f.label 'メッセージ'

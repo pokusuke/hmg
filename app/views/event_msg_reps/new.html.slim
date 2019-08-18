@@ -1,15 +1,30 @@
 h2.page-title コメント
+div.msg-item
+  |
+    <div class="table-row">
+      <div class="msg-sender-img"><img src="#{@event_msg.user.avatar_path}"></div>
+      <div class="msg-container">
+        #{@event_msg.user.name}: <br>
+        <span class="msg-content">#{@event_msg.msg}</span>
+      </div>      
+    </div>
+
+hr
 ul.msg-list
   - @event_msg_reps.each do |event_msg_rep|
-    li
+    li.msg-item
       |
-        #{event_msg_rep.user.name}: <br>
-        <span class="msg-content">#{event_msg_rep.msg}</span>
-
+        <div class="table-row">
+          <div class="msg-sender-img"><img src="#{event_msg_rep.user.avatar_path}"></div>
+          <div class="msg-container">
+            #{event_msg_rep.user.name}: <br>
+            <span class="msg-content">#{event_msg_rep.msg}</span>
+          </div>
+        </div>
 = form_with model:@event_msg_rep,local:true do |f|
     .form-group
       = f.hidden_field :event_msg_id, :value=>@event_msg_id
-      = f.label 'コメント入力'
+      = f.label '返信を入力'
       br
       = f.text_area :msg,{class:"msg"}
-    = f.submit "コメントを送信"
+    = f.submit "送信"

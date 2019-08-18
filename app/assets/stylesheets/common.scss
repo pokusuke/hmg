@@ -56,8 +56,9 @@ body{
   color:#333;
 }
 .msg-content img{
-  max-width: 400px;
+  max-width: 100%;
   height: auto;
+  margin:0 auto;
 }
 .header{
   border-bottom:1px solid #333;
@@ -178,6 +179,7 @@ body{
     li{
       list-style-type: none;
       padding:10px;
+      margin-bottom:15px;
     }
   }
   .msg-content{
@@ -453,4 +455,45 @@ Component
   height:30px;
   line-height:30px;
   color: #fff;
+}
+a.msg-item-link{
+  color:#333;
+  text-decoration: none;
+  
+}
+.msg-item{
+  clear:both;
+  overflow: hidden;
+  display:table;
+  width:100%;
+  box-sizing: border-box;
+  .table-row{
+    display:table-row;
+  }
+  .msg-sender-img{
+    display:table-cell;
+    vertical-align: top;
+    text-align: left;
+    img{
+      width:40px;
+      height:40px;
+      border-radius: 100px;
+      object-fit: cover;
+    }
+  }
+  .msg-container{
+    display:table-cell;
+    width:95%;
+    padding-left:5px;
+    box-sizing: border-box;
+    text-align: left;
+    vertical-align: text-top;
+    
+  }
+  .msg-rep-num{
+    clear:both;
+    display:table-cell;
+    padding:5px;
+    box-sizing: border-box;
+  }
 }

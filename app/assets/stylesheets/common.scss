@@ -1,4 +1,7 @@
-body,p,h1,h2,h3,dl{
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+body,p,h1,h2,h3,dl,dd,dt,ul,li{
   margin:0;
   padding:0;
 }
@@ -8,12 +11,12 @@ input[type="submit"]{
   margin-bottom:10px;
   margin-left:auto;
   margin-right:auto;  
-  width:150px;
-  line-height:50px;
-  height:50px;
+  width:100%;
+  line-height:35px;
+  height:35px;
   font-size:16px;
   background-color:#16A6B6;
-  border-radius: 10px;
+  border-radius: 3px;
   color:#fff;
   cursor: pointer;
   transition: 0.3s;
@@ -60,6 +63,7 @@ body{
   top:0;
   left:0;
   background-color:#fff;
+  z-index:999;
   h1 {
     font-size:16px;
     a{
@@ -121,7 +125,7 @@ body{
     background-color:#bfbfbf;
     text-align: center;
     color:#fff;
-    width:150px;
+    width:100px;
     height:50px;
     line-height:50px;
     display:block;
@@ -196,21 +200,55 @@ form{
   width:100%;
   display:block;
 }
-.form-group{
+.form_group{
   margin-top:5px;
   margin-bottom:15px;
 }
+.event-result a{
+  text-decoration: none;
+  color:#333;
+}
+
 .event{
+  /*
     &:nth-child(odd){
       background-color:#f7f7f7;
     }
+  */
+    cursor: pointer;
+    clear:both;
+    overflow: hidden;
+    /*padding:10px;*/
+    border:1px solid #eee;
+    box-shadow: 1px 1px 3px #aaa;
+    margin-bottom:15px;
     dt{
       text-align: center;
       font-weight: bold;
       padding:10px;
+      border-bottom:1px dotted #eee;
+      color: #2980b9;
+      background-color:#f6f5f4;
     }
     dd{
       padding:10px;
+      overflow: hidden;
+      position:relative;
+      .list-img{
+        float:left;
+        border:1px solid #eee;
+        margin-right:5px;
+      }
+      .list-desc{
+        float:left;
+        text-align: left;
+      }
+      .detail-icon{
+        position: absolute;
+        top:50%;
+        right:10px;
+        transform: translateY(-50%);
+      }
     }
 }
 .event-show{
@@ -233,10 +271,12 @@ form{
     margin-left:auto;
     margin-right:auto;
     display:block;
-    font-size:30px;
+    font-size:24px;
   }  
 }
-
+.event-app{
+  margin-right:10px;
+}
 footer{
   background-color:#333;
   color:#fff;
@@ -325,12 +365,63 @@ Component
   font-weight: bold;
 }
 
+.event-app-btn-list li{
+  display: inline-block;
+  margin-right:5px;
+}
+
+.search-config {
+  margin-top:10px;
+  margin-bottom:20px;
+  padding:5px;
+  border:1px solid #eee;
+  box-shadow: 1px 1px 2px #aaa;
+  table{
+    width: 100%;
+  }
+  th,td{
+    padding:10px;
+    border:1px solid #eee;
+  }
+  th{
+    font-weight: normal;
+    background-color:#f6f5f4;
+    text-align:left;
+  }
+  td{
+    text-align: center;
+  }
+  .select-pref select{
+    width:100%;
+    height:30px;
+    display: block;
+    font-size: 14px;
+  }
+  .select-date select{
+    width: 27%;
+    height:30px;
+    font-size:14px;
+    margin-right:1%;
+    margin-left:1%;
+  }
+}
 
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
 #map {
-  width: 80%;
+  width: 90%;
   height: 500px;
   margin: 15px auto;
-  
+}
+
+.img-thum{
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.img-thum-l{
+  width: 90%;
+  height: 300px;
+  object-fit: cover;
 }

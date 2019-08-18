@@ -1,10 +1,34 @@
 class EventsController < ApplicationController
   before_action :logged_in_user, only:[:new,:create,:destroy]
   def index
-    if params[:pref_id]
+    if params[:pref_id].present?
       @pref = Pref.find(params[:pref_id])
-      @events = Event.all
+      if params[:commit]
+        event_date_from = Time.zone.local(params["event_date_from(1i)"].to_i,params["event_date_from(2i)"].to_i,params["event_date_from(3i)"].to_i)
+        if params["event_date_to(li)"]
+          event_date_to = Time.zone.local(params["event_date_to(1i)"].to_i,params["event_date_to(2i)"].to_i,params["event_date_to(3i)"].to_i)
+        else
+          logger.debug("=====日付復元できるか====")
+          event_date_to = nil
+        end
+      else
+        event_date_from = Time.zone.parse(params[:event_date_from])
+        event_date_to = nil
+      end
+      @event_date_from = event_date_from
+      @event_date_to = event_date_to
+      
+      #events検索
+      @events = Event.search_with_pref(params[:pref_id])
+      if @event_date_from
+        @events = @events.search_with_start(event_date_from)
+      end
+      if @event_date_to
+        @events = @events.search_with_end(event_date_to)
+      end
+
     else 
+      @event_date_from = Time.zone.now
       @events = Event.all
     end
   end

@@ -1,5 +1,5 @@
 
-    h1= link_to "Handmade Garden",home_path
+    h1= link_to "Handmade Garden",root_url
     - current_user
     p= "#{@current_user.name}でログイン中" if @current_user!=nil
     div#menu= link_to '','javascript:void(0);'

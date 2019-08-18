@@ -9,4 +9,8 @@ class Event < ApplicationRecord
 
   enum event_recruiting_flgs: {"募集しない" => 0, "募集する" => 1}
   enum event_published_flgs: {"下書き" => 0 ,"公開" => 1 }
+
+  scope :search_with_pref, ->(pref_id) { where(pref_id: pref_id) }
+  scope :search_with_start, ->(event_date_from){ where("event_date >= ?",event_date_from) }
+  scope :search_with_end, ->(event_date_to){ where("event_date <= ?",event_date_to)}
 end

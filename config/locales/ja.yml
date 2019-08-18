@@ -6,3 +6,6 @@ ja:
         email: メールアドレス
         nick_name: ニックネーム
         prof: プロフィール
+  time:
+    formats:
+      full_date: "%Y年%m月%d日 (%a)"

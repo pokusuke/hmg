@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :logged_in_user, only:[:new,:create,:destroy]
+  PER = 2
   def index
     if params[:pref_id].present?
       @pref = Pref.find(params[:pref_id])
@@ -31,6 +32,7 @@ class EventsController < ApplicationController
       @event_date_from = Time.zone.now
       @events = Event.all
     end
+    @events = @events.page(params[:page]).per(PER)
   end
 
   def new

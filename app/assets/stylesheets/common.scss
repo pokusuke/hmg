@@ -3,6 +3,7 @@
 
 /*変数*/
 $link_color: #2980b9;
+$main-color: rgb(250, 133, 133);
 
 
 body,p,h1,h2,h3,dl,dd,dt,ul,li{
@@ -73,7 +74,7 @@ body{
     font-size:16px;
     a{
       text-decoration: none;
-      color:rgb(250, 133, 133);
+      color:$main-color;
     }
   }
   #menu{
@@ -495,5 +496,43 @@ a.msg-item-link{
     display:table-cell;
     padding:5px;
     box-sizing: border-box;
+  }
+}
+
+.pagination{
+  overflow: hidden;
+  .page,.next,.last,.prev,.first{
+    width:30px;
+    height:30px;
+    line-height:30px;
+    box-sizing: border-box;
+    text-align: center;
+    display:block;
+    float:left;
+    margin-left:15px;
+  }
+  .next,.last,.prev,.first{
+    a:hover{
+      opacity:0.6;
+    }
+  }
+  .page{
+    a{
+      display:block;
+      border:1px solid #aaa;
+      box-sizing: border-box;
+      height:30px;
+      line-height:30px;
+      
+      &:hover{
+        background:#fff4f6;
+      }
+
+    }
+    &.current{
+      background-color:$main-color;
+      color: #fff;
+      border:none;
+    }
   }
 }

@@ -1,24 +1,17 @@
-# README
+## Handmade Garden
+### Handmade Gardenとは
+ハンドメイドのイベントを管理するアプリケーションです。
+利用するユーザの種類は下記の３種類。
+* イベント主催者
+* イベント出店者 (作家)
+* イベント参加者
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### なぜ作ったか
 
-Things you may want to cover:
+### アプリケーション構成
 
-* Ruby version
 
-* System dependencies
+### アプリケーション機能一覧
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 使用技術一覧

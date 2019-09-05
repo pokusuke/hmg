@@ -4,8 +4,14 @@ jobs:
     docker:
       - image: alpine:3.7
     steps:
+      - chekcout
       - run:
           name: The First Step
           command: |
             echo 'Hello World!'
             echo 'test'
+      - run:
+          name: Code Has Arrived
+          command: |
+            ls -al
+            echo '^^^ That should look familiar'

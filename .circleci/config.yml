@@ -43,10 +43,10 @@ workflows:
       - I-Have-Code:
           requires:
             - Hello-World
-      - Run-With-Node
+      - Run-With-Node:
           requires:
             - Hello-World
-      - Hold-For-Approval
+      - Hold-For-Approval:
           type: approval
           requires:
             - Run-With-Node

@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  #host: localhost
-  host: db
+  host: localhost
+  #host: db
   username: root
   password: password
   #socket: /tmp/mysql.sock
@@ -51,6 +51,7 @@ test:
 #
 production:
   <<: *default
-  database: hmg_production
-  username: hmg
-  password: <%= ENV['HMG_DATABASE_PASSWORD'] %>
+  host: <%= Rails.application.credentials.rds[:host] %>
+  database: <%= Rails.application.credentials.rds[:database] %>
+  username: <%= Rails.application.credentials.rds[:username] %>
+  password: <%= Rails.application.credentials.rds[:password] %>

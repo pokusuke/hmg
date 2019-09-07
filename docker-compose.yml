@@ -1,18 +1,26 @@
 version: '3'
 services:
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABESE: root
-    ports:
-      - "3306:3306"
   web:
+    container_name: hmg_web_prod
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment:
+      RAILS_ENV: production
+    command: bundle exec puma -C config/puma.rb
     volumes:
-      - .:/app_name
+      - .:/app
+      - ./public:/app/public
+      - ./tmp:/app/tmp
+      - ./log:/app/log
     ports:
       - "3000:3000"
-    links:
-      - db
+  
+  nginx:
+    container_name: hmg_nginx_prod
+    build: containers/nginx
+    volumes:
+      - ./public:/app/public
+      - ./tmp:/app/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - web

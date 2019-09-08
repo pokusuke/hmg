@@ -1,2 +1,3 @@
-  - if flash.present?
-    p.flash-msg = flash[:success]
+- flash.each do |message_type, message|
+  p class= "flash-msg alert-#{message_type}"
+    | #{message}

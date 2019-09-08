@@ -450,13 +450,22 @@ Component
   }
 }
 .flash-msg{
-  border: 2px solid #16A6B6;
-  background-color: #00b894;
   border-radius: 3px;
   height:30px;
   line-height:30px;
   color: #fff;
+
+  &.alert-success{
+    border: 2px solid #16A6B6;
+    background-color: #00b894;
+  }
+  &.alert-error{
+    color: #a94442;
+    border: 2px solid #ebccd1;
+    background-color: #f2dede;
+  }
 }
+
 a.msg-item-link{
   color:#333;
   text-decoration: none;

@@ -17,6 +17,7 @@ describe Area do
     expect(area.errors[:area_name]).to include "は50文字以内で入力してください"
   end
 
+
   it 'area_nameは重複しないこと' do
     FactoryBot.create(:area, area_name: "aaa")
     area = FactoryBot.build(:area, area_name: "aaa")

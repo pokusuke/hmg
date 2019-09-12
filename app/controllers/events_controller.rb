@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :logged_in_user, only:[:new,:create,:destroy]
-  PER = 2
+  before_action :authenticate_user!, only:[:new,:create,:destroy]
+  PER = 10
   def index
     if params[:pref_id].present?
       @pref = Pref.find(params[:pref_id])
@@ -9,7 +9,6 @@ class EventsController < ApplicationController
         if params["event_date_to(li)"]
           event_date_to = Time.zone.local(params["event_date_to(1i)"].to_i,params["event_date_to(2i)"].to_i,params["event_date_to(3i)"].to_i)
         else
-          logger.debug("=====日付復元できるか====")
           event_date_to = nil
         end
       else

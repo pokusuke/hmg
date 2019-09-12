@@ -1,5 +1,5 @@
 class MsgsController < ApplicationController
-  before_action :logged_in_user, only:[:index,:select_user,:new,:create,:destroy]
+  before_action :authenticate_user!, only:[:index,:select_user,:new,:create,:destroy]
   def index
     @msg_users = MsgUser.where("user_id=#{current_user.id}")
   end

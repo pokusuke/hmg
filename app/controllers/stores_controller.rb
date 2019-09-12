@@ -1,5 +1,5 @@
 class StoresController < ApplicationController
-  before_action :logged_in_user, only:[:index,:create,:new]
+  before_action :authenticate_user!, only:[:index,:create,:new]
   
   def index
     @store = Store.find_by(id:params[:event_app_id])

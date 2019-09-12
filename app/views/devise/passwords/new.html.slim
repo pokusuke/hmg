@@ -1,0 +1,15 @@
+section.content
+  h2　パスワードリセット
+  p
+    |
+      「パスワード再設定ページのURL」を、登録メールアドレスに送信します。<br>
+        登録メールアドレスを入力し【送信する】を押してください。<br>
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .form-group
+      = f.label :email
+      br
+      = f.text_field :email, autofocus: true, autocomplete: "email"
+    .actions
+      = f.submit "送信する"
+  = render "devise/shared/links"

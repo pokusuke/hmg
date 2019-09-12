@@ -1,5 +1,5 @@
 class EventAppsController < ApplicationController
-  before_action :logged_in_user, only:[:index,:create]
+  before_action :authenticate_user!, only:[:index,:create]
   def index
     @event_apps = EventApp.where(user_id: current_user.id)
   end

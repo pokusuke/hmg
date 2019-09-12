@@ -1,5 +1,5 @@
 class EventMsgsController < ApplicationController
-  before_action :logged_in_user, only:[:index,:create,:new]
+  before_action :authenticate_user!, only:[:index,:create,:new]
 
   def index
     @event_msgs = EventMsg.where(event_id: params[:event_id])

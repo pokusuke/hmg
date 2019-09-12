@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   get 'chat/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'events#index'  
@@ -9,9 +11,10 @@ Rails.application.routes.draw do
   resources :users
   resources :areas
   resources :prefs
+  resources :events
 
-  get '/login', to:'sessions#new'
-  post '/login',to:'sessions#create'
+  #get '/login', to:'sessions#new'
+  #post '/login',to:'sessions#create'
   delete '/logout',to:'sessions#destroy'
 
   post '/event_apps',to:'event_apps#create'
@@ -37,7 +40,11 @@ Rails.application.routes.draw do
   post 'msgs/:id',to:'msgs#create'
 
   get '/home',to:'home#index'
- resources :events
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
+ 
 
 
 

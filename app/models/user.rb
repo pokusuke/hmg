@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,:confirmable
+
   has_many :events
   mount_uploader :avatar_path, AvatarUploader
 
@@ -11,7 +16,7 @@ class User < ApplicationRecord
   validates :name, presence:true
 
   ##パスワード
-  has_secure_password
+  #has_secure_password
   validates :password,presence:true,length:{minimum:6},allow_nil:true
 
   #渡されたトークンがダイジェスト一致したらtrueを返す

@@ -16,12 +16,12 @@ input[type="submit"]{
   margin-bottom:10px;
   margin-left:auto;
   margin-right:auto;  
-  width:100%;
+  width:300px;
   line-height:35px;
   height:35px;
   font-size:16px;
   background-color:#16A6B6;
-  border-radius: 3px;
+  border-radius: 5px;
   color:#fff;
   cursor: pointer;
   transition: 0.3s;
@@ -102,6 +102,8 @@ body{
   .page-title{
     font-size:16px;
     padding:10px;
+    margin-bottom:10px;
+    text-decoration: underline;
   }  
   .event-new{
     text-align:center;
@@ -207,7 +209,7 @@ form{
   width:100%;
   display:block;
 }
-.form_group{
+.form-group{
   margin-top:5px;
   margin-bottom:15px;
 }
@@ -465,7 +467,13 @@ Component
     background-color: #f2dede;
   }
 }
-
+.form-error{
+  color: #a94442;
+}
+.input-error{
+  border: 2px solid #ebccd1;
+  background-color: #f2dede;
+}
 a.msg-item-link{
   color:#333;
   text-decoration: none;

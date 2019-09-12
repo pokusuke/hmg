@@ -2,7 +2,7 @@ section.content
   h2.page-title ユーザ登録
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     .form-group
-      = f.label "ユーザ名"
+      = f.label :name
       br
       - if resource.errors[:name].any?
          = f.text_field :name, autofocus: true, autocomplete: "ユーザ名",:class=>"input-error"
@@ -11,7 +11,7 @@ section.content
          = f.text_field :name, autofocus: true, autocomplete: "ユーザ名"
 
     .form-group
-      = f.label "メールアドレス"
+      = f.label :email
       br
       - if resource.errors[:email].any?
          = f.text_field :email, autofocus: true, autocomplete: "メールアドレス",:class=>"input-error"
@@ -20,7 +20,7 @@ section.content
          = f.text_field :email, autofocus: true, autocomplete: "メールアドレス"
 
     .form-group
-      = f.label "パスワード"
+      = f.label :password
       br
       - if resource.errors[:password].any?
          = f.password_field :password, autofocus: true, autocomplete: "新しいパスワード",:class=>"input-error"
@@ -29,7 +29,7 @@ section.content
          = f.password_field :password, autofocus: true, autocomplete: "新しいパスワード"
 
     .field
-      = f.label "確認用パスワード"
+      = f.label :password_confirmation
       br
       = f.password_field :password_confirmation, autocomplete: "新しいパスワード"
     .actions

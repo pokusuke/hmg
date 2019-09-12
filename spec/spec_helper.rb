@@ -14,7 +14,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'capybara/rspec'
-
+Capybara.ignore_hidden_elements = false
 
 RSpec.configure do |config|
   config.before(:each,type: :system) do

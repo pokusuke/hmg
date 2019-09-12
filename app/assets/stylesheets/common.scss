@@ -456,7 +456,8 @@ Component
   height:30px;
   line-height:30px;
   color: #fff;
-
+  
+  
   &.alert-success{
     border: 2px solid #16A6B6;
     background-color: #00b894;
@@ -465,6 +466,11 @@ Component
     color: #a94442;
     border: 2px solid #ebccd1;
     background-color: #f2dede;
+  }
+  &.alert-notice{
+    color: #fff;
+    border: 2px solid #fff;
+    background-color: #333;
   }
 }
 .form-error{

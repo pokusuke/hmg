@@ -1,11 +1,36 @@
 ja:
   activerecord:
+    models:
+      user: ユーザ
+      event: イベント
+      pref: 都道府県
     attributes:
       user:
         name: 名前
         email: メールアドレス
         nick_name: ニックネーム
         prof: プロフィール
+      event:
+        event_name: イベント名
+        event_date: 開催日
+        event_published_flg: 公開する
+        event_recruiting_flg: 出店者の募集
+        city: 市区町村
+        place_detail: 場所詳細
+        event_detail: イベント詳細
+        event_recruit_start_date: 募集受付開始日
+        event_recruit_end_date: 募集受付締切日
+        event_recruit_number: 募集人数
+        event_entrance_fee: 参加費
+        photo_url1: 画像1
+        photo_url2: 画像2
+        photo_url3: 画像3
+        photo_url4: 画像4
+        pref_id: 都道府県
+        user_id: ユーザ
+      pref:
+        pref_id: 都道府県コード
+        pref_name: 都道府県
   time:
     formats:
       full_date: "%Y年%m月%d日 (%a)"

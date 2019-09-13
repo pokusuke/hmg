@@ -7,11 +7,13 @@ class Event < ApplicationRecord
   # バリデーション
   validates :event_name, presence:true, length:{ maximum: 255 }
   validates :event_date, presence:true
-  validates :event_published_flg, presence:true
+  validates :pref_id, presence:true
+  validates :user_id, presence:true
+  validates :event_published_flg, inclusion: { in: [false,true] }
   validates :event_detail,length:{ maximum: 2000 }
   validates :city, length:{ maximum: 255 }
   validates :place_detail, length:{ maximum: 255 }
-  validates :event_recruiting_flg, presence:true
+  validates :event_recruiting_flg, inclusion: { in: [false, true] }
   validates :event_recruit_number, numericality: { only_integer: true, greater_than_or_equal_to: 0},allow_nil: true
   validates :event_entrance_fee, numericality: { only_integer: true, greater_than_or_equal_to: 0},allow_nil: true
   validate :valid_date
@@ -34,8 +36,8 @@ class Event < ApplicationRecord
   mount_uploader :photo_url4, AvatarUploader
 
   # 区分値
-  enum event_recruiting_flgs: {"募集しない" => 0, "募集する" => 1}
-  enum event_published_flgs: {"下書き" => 0 ,"公開" => 1 }
+  enum event_recruiting_flgs: {"募集しない" => false, "募集する" => true } 
+  enum event_published_flgs: {"下書き" => false,"公開" => true }
 
   # クエリ
   scope :search_with_pref, ->(pref_id) { where(pref_id: pref_id) }

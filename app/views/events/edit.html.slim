@@ -1,6 +1,5 @@
 div.content
   h2.page-title イベント編集
-  = render partial: 'layouts/flash', locals:{ store: @store}
   = form_with model:@event,local:true do |f|
     .form-group
       = f.label "イベント名"
@@ -25,7 +24,7 @@ div.content
     .form-group
       span.label= f.label "出店者の募集"
       br
-      = f.select :event_recruiting_flg,options_for_select(Event.event_recruiting_flgs)
+      = f.select :event_recruiting_flg,options_for_select(Event.event_recruiting_flgs,@event.event_recruiting_flg)
     .form-group
       span.label= f.label "募集受付開始日"
       br
@@ -64,5 +63,5 @@ div.content
       = f.file_field :photo_url4 
     .form-group
       span.label= f.label "公開する"
-      = f.select :event_published_flg, options_for_select(Event.event_published_flgs)      
+      = f.select :event_published_flg,options_for_select(Event.event_published_flgs,@event.event_published_flg)
     = f.submit "イベント登録"

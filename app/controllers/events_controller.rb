@@ -39,27 +39,25 @@ class EventsController < ApplicationController
   end
 
   def create
-    begin
-      ActiveRecord::Base.transaction{      
-        #イベントを保存
-        event = Event.new(event_params)
-        event.user_id = current_user.id
-        event.event_date = Time.zone.local(params[:event]["event_date(1i)"].to_i,params[:event]["event_date(2i)"].to_i,params[:event]["event_date(3i)"].to_i)
-        event.event_recruit_start_date = Time.zone.local(params[:event]["event_recruit_start_date(1i)"].to_i,params[:event]["event_recruit_start_date(2i)"].to_i,params[:event]["event_recruit_start_date(3i)"].to_i)
-        event.event_recruit_end_date = Time.zone.local(params[:event]["event_recruit_end_date(1i)"].to_i,params[:event]["event_recruit_end_date(2i)"].to_i,params[:event]["event_recruit_end_date(3i)"].to_i)
-        event.save!
-
-        #イベント参加者に作成者を追加
-        event_app = EventApp.new
-        event_app.event_id = event.id
-        event_app.user_id = current_user.id
-        event_app.save!
-      }
-    rescue Exception => e
-      p e
-      
+    @event = Event.new(formatted_event_params)
+    if @event.valid?
+      begin
+        ActiveRecord::Base.transaction{      
+          @event.save!
+          #イベント参加者に作成者を追加
+          event_app = EventApp.new
+          event_app.event_id = @event.id
+          event_app.user_id = current_user.id
+          event_app.save!
+        }
+      rescue Exception => e
+        p e
+      end
+      redirect_to events_path
+    else
+      flash.now[:error] = "不正な入力があります"
+      render 'events/new'
     end
-    redirect_to events_path
   end
 
   def edit
@@ -67,10 +65,13 @@ class EventsController < ApplicationController
   end
   
   def update
-    event = Event.find(params[:id])
-    event.update_attributes!(event_name:params[:event][:event_name],user_id: current_user.id , event_date: Time.zone.local(params[:event]["event_date(1i)"].to_i,params[:event]["event_date(2i)"].to_i,params[:event]["event_date(3i)"].to_i))
-    flash[:success] = '保存しました'
-    redirect_to edit_event_path(event)
+    @event = Event.find(params[:id])
+    if @event.update(formatted_event_params)
+      flash[:success] = '保存しました'
+    else
+      flash[:error] = "不正な入力があります"
+    end
+    redirect_to edit_event_path(@event)
   end
 
   def show
@@ -87,7 +88,10 @@ class EventsController < ApplicationController
         :event_date,
         :pref_id,
         :city,
+        :event_published_flg,
+        :event_recruiting_flg,
         :place_detail,
+        :event_date,
         :event_recruit_start_date,
         :event_recruit_end_date,
         :event_recruit_number,
@@ -98,5 +102,16 @@ class EventsController < ApplicationController
         :photo_url3,
         :photo_url4 
       )
+    end
+
+    def formatted_event_params
+      attrs = event_params.to_h
+      attrs[:user_id] = current_user.id
+      attrs[:event_published_flg] = attrs[:event_published_flg]
+      attrs[:event_recruiting_flg] = attrs[:event_recruiting_flg]
+      attrs[:event_date] = Time.zone.local(params[:event]["event_date(1i)"].to_i,params[:event]["event_date(2i)"].to_i,params[:event]["event_date(3i)"].to_i)
+      attrs[:event_recruit_start_date] = Time.zone.local(params[:event]["event_recruit_start_date(1i)"].to_i,params[:event]["event_recruit_start_date(2i)"].to_i,params[:event]["event_recruit_start_date(3i)"].to_i)
+      attrs[:event_recruit_end_date] = Time.zone.local(params[:event]["event_recruit_end_date(1i)"].to_i,params[:event]["event_recruit_end_date(2i)"].to_i,params[:event]["event_recruit_end_date(3i)"].to_i)
+      attrs
     end
 end

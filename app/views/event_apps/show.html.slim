@@ -11,3 +11,4 @@ ul.event-app-btn-list
   
   - if @event_app.event.user.id == current_user.id
     li= link_to 'イベント編集',edit_event_path(@event_app.event),:class=>"btn-min"
+    li= link_to 'イベント削除',event_path(@event_app.event),:class=>"btn-min",method: :delete, data:{ confirm: '本当に削除してよろしいでしょうか？' }

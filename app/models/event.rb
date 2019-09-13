@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   # モデルの関連定義
   belongs_to :user, :foreign_key => "user_id"
   belongs_to :pref, :foreign_key => "pref_id"
-  has_many :event_apps
+  has_many :event_apps, dependent: :destroy
 
   # バリデーション
   validates :event_name, presence:true, length:{ maximum: 255 }

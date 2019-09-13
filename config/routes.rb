@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/event_apps',to:'event_apps#index'
   get '/event_apps/:id',to:'event_apps#show',as: 'event_app'
 
+
   get '/event_msgs',to:'event_msgs#index'
   post '/event_msgs',to:'event_msgs#create'
 

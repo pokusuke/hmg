@@ -2,6 +2,8 @@ h2.page-title 参加イベント一覧
 
 
 section
+  -if @event_apps.empty?
+    p 参加予定のイベントはありません。
   -@event_apps.each do |event_app|
     =link_to event_app_path(event_app) do 
       dl.event

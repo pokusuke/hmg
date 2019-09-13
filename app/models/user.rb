@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:confirmable
 
-  has_many :events
+  has_many :events, dependent: :destroy
   mount_uploader :avatar_path, AvatarUploader
 
   ###バリデーション

@@ -79,7 +79,11 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def destory
+  def destroy
+    @event = current_user.events.find(params[:id])
+    @event.destroy
+    flash[:success]='イベントを削除しました'
+    redirect_to event_apps_path
   end
 
   private

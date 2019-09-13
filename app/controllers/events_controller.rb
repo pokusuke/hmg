@@ -53,6 +53,7 @@ class EventsController < ApplicationController
       rescue Exception => e
         p e
       end
+      flash[:success] = 'イベントを登録しました'
       redirect_to events_path
     else
       flash.now[:error] = "不正な入力があります"

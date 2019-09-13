@@ -1,7 +1,7 @@
 h2 イベント登録
 = form_with model:@event,local:true do |f|
     .form-group
-      span.label = f.label "イベント名"
+      span.label = f.label :event_name
       br
       = f.text_field :event_name
       - if @event.errors[:event_name].any?
@@ -91,4 +91,4 @@ h2 イベント登録
     .form-group
       span.label= f.label "公開する"
       = f.select :event_published_flg, options_for_select(Event.event_published_flgs)
-    = f.submit "イベント登録"
+    = f.submit "登録する"

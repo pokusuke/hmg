@@ -11,4 +11,7 @@ class EventAppsController < ApplicationController
     event_app.save!
   end
 
+  def show
+    @event_app = EventApp.find(params[:id])
+  end
 end

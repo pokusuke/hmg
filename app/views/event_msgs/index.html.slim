@@ -1,4 +1,4 @@
-h2.page-title イベントメッセージ
+h2.page-title = "チャット　(#{@event.event_name})"
 ul.msg-list
   - @event_msgs.each do |event_msg|
     =link_to url_for(:controller=>'event_msg_reps',:action=>'new',event_msg_id: event_msg.id),:class=>'msg-item-link' do 

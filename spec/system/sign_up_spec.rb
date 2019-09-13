@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "新規ユーザ登録のテスト", type: :system do
+describe "新規ユーザ登録のシステムテスト", type: :system do
   before do
     visit new_user_registration_path
   end

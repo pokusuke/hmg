@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "ログインのテスト", type: :system do
+describe "ログインのシステムテスト", type: :system do
   before do
     visit new_user_session_path
   end

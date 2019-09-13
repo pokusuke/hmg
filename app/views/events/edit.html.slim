@@ -64,4 +64,4 @@ div.content
     .form-group
       span.label= f.label "公開する"
       = f.select :event_published_flg,options_for_select(Event.event_published_flgs,@event.event_published_flg)
-    = f.submit "イベント登録"
+    = f.submit "登録する"

@@ -4,6 +4,7 @@ class EventMsgsController < ApplicationController
   def index
     @event_msgs = EventMsg.where(event_id: params[:event_id])
     @event_id = params[:event_id]
+    @event = Event.find_by(id:params[:event_id])
     @event_msg = EventMsg.new
   end
 

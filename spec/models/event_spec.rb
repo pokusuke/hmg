@@ -26,7 +26,7 @@ describe Event do
   it 'event_published_flgがなければ無効なこと' do
     event = FactoryBot.build(:event, event_published_flg: nil)
     event.valid?
-    expect(event.errors[:event_published_flg]).to include "を入力してください"   
+    expect(event.errors[:event_published_flg]).to include "は一覧にありません"   
   end
 
   it 'event_detailが2001文字以上であれば無効なこと' do
@@ -50,7 +50,7 @@ describe Event do
   it 'event_recruiting_flgがなければ無効なこと' do
     event = FactoryBot.build(:event, event_recruiting_flg: nil)
     event.valid?
-    expect(event.errors[:event_recruiting_flg]).to include "を入力してください"    
+    expect(event.errors[:event_recruiting_flg]).to include "は一覧にありません"    
   end
 
   it 'event_recruit_start_dateがevent_recruit_end_dateより大きければ無効であること' do

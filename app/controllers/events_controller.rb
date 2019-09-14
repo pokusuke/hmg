@@ -68,11 +68,11 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update(formatted_event_params)
-      flash[:success] = '保存しました'
+      flash.now[:success] = '保存しました'
     else
-      flash[:error] = "不正な入力があります"
+      flash.now[:error] = "不正な入力があります"
     end
-    redirect_to edit_event_path(@event)
+    render 'events/edit'
   end
 
   def show

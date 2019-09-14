@@ -13,5 +13,8 @@ class EventAppsController < ApplicationController
 
   def show
     @event_app = EventApp.find(params[:id])
+    if @event_app.user_id != current_user.id
+      redirect_to event_apps_path
+    end
   end
 end

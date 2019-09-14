@@ -2,7 +2,18 @@ class StoresController < ApplicationController
   before_action :authenticate_user!, only:[:index,:create,:new]
   
   def index
-    @store = Store.find_by(id:params[:event_app_id])
+    @store = Store.find_by(event_app_id:params[:event_app_id])
+  end
+
+  def edit
+    @store = Store.find_by(event_app_id:params[:event_app_id])
+    render 'stores/index'
+  end
+
+  def new
+    @event_app_id = params[:event_app_id]
+    @store =Store.new
+    render 'stores/new'
   end
 
   def create
@@ -13,26 +24,43 @@ class StoresController < ApplicationController
     store.store_owner_id = current_user.id
     store.name = params[:store][:name]
     store.store_desc = params[:store][:store_desc]
-    store.save!
-    redirect_to stores_path(event_app_id: event_app.id)
+    
+    if store.save
+      flash[:success] = '保存しました'
+    else
+      flash[:error] = '不正な入力があります'
+    end
+    redirect_to edit_event_app_store_path(store.event_app_id,store.id)
   end
 
-  def new
-    @event_app_id = params[:event_app_id]
-    @store =Store.new
-  end
-
-  def store_edit
-    store = Store.find_by(id:params[:store][:store_id])
-    store.name = params[:store][:name]
-    store.store_desc = params[:store][:store_desc]
-    store.save!
-    flash[:success] = "保存しました"
-    redirect_to request.referer
+  def update
+    @store = Store.find_by(id:params[:store][:store_id])
+    if @store.update(store_params)
+      flash.now[:success] = "保存しました"
+    else
+      flash.now[:error] = "不正な入力があります"
+    end
+    render 'stores/index'
   end
 
   def show
     @store = Store.find_by(id:params[:id])
   end
+  
+  def destroy
+    @store = Store.find_by(id:params[:id])
+    event_app_id = @store.event_app_id
 
+    @store.destroy
+    flash[:success]='イベントを削除しました'
+    redirect_to event_app_path(event_app_id)
+  end
+  private 
+
+  def store_params
+    params.require(:store).permit(
+      :name,
+      :store_desc,
+    )
+  end
 end

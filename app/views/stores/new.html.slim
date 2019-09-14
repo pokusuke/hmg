@@ -1,9 +1,11 @@
 h2 出店情報の新規作成
-= form_with model:@store,local:true do |f|
+= form_with model:@store,local:true,url:event_app_stores_path(@event_app_id) do |f|
   .form_group
     = f.label '出店名'
     br
     = f.text_field :name
+    - if @store.errors[:name].any?
+      span.form-error= @store.errors.full_messages_for(:name)[0]
   .form_group
     = f.hidden_field :event_app_id, :value=>@event_app_id
     = f.label '出店概要'

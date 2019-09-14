@@ -12,24 +12,26 @@ Rails.application.routes.draw do
   resources :areas
   resources :prefs
   resources :events
-
+  resources :event_apps do
+    resources :stores
+  end
   #get '/login', to:'sessions#new'
   #post '/login',to:'sessions#create'
   delete '/logout',to:'sessions#destroy'
 
-  post '/event_apps',to:'event_apps#create'
-  get '/event_apps',to:'event_apps#index'
-  get '/event_apps/:id',to:'event_apps#show',as: 'event_app'
+  #post '/event_apps',to:'event_apps#create'
+  #get '/event_apps',to:'event_apps#index'
+  #get '/event_apps/:id',to:'event_apps#show',as: 'event_app'
 
 
   get '/event_msgs',to:'event_msgs#index'
   post '/event_msgs',to:'event_msgs#create'
 
-  get '/stores',to:'stores#index'
-  post '/stores',to:'stores#create'
-  get '/stores/new',to:'stores#new'
-  post '/stores/store_edit',to:'stores#store_edit'
-  get 'stores/show/:id', to:'stores#show'
+  #get '/stores',to:'stores#index'
+  #post '/stores',to:'stores#create'
+  #get '/stores/new',to:'stores#new'
+  #post '/stores/store_edit',to:'stores#store_edit'
+  #get '/stores/:id', to:'stores#show'
 
   get '/event_msg_reps/new',to:'event_msg_reps#new'
   post '/event_msg_reps',to:'event_msg_reps#create'

@@ -1,6 +1,5 @@
 div.content
   h2.page-title プロフィール編集
-  = render partial: 'layouts/flash', locals:{ user: @user}
   = form_with model:@user,local:true,multipart:true do |f|
     .form-group
       = f.label "名前"

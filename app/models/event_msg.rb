@@ -7,4 +7,6 @@ class EventMsg < ApplicationRecord
   # バリデーション
   validates :msg,  length:{ maximum: 400 }
 
+  mount_uploader :photo_url, AvatarUploader
+
 end

@@ -4,15 +4,29 @@ ul.msg-list
     =link_to url_for(:controller=>'event_msg_reps',:action=>'new',event_msg_id: event_msg.id),:class=>'msg-item-link' do 
       li.msg-item
         .table-row
+        -if event_msg.photo_url.url
           .msg-sender-img
-            -if event_msg.user.avatar_path?
+            - if event_msg.user.avatar_path?
               = image_tag event_msg.user.avatar_path
-            -else
+            - else
               = image_tag 'no-image-human.png'
           .msg-container
-            = event_msg.user.name
+            = event_msg.user.nick_name
             br
-            = event_msg.msg
+            span.msg-content
+              =event_msg.msg
+              br
+              span.msg-img=image_tag event_msg.photo_url.url
+        -else
+          .msg-sender-img
+            - if event_msg.user.avatar_path?
+              = image_tag event_msg.user.avatar_path
+            - else
+              = image_tag 'no-image-human.png'
+          .msg-container
+            = event_msg.user.nick_name
+            br
+            span.msg-content= event_msg.msg
         - if event_msg.event_msg_reps.present?
           div.table-row
             div.msg-rep-num= ""
@@ -24,4 +38,7 @@ ul.msg-list
       = f.label 'メッセージ入力'
       br
       = f.text_area :msg,{class:"msg"}
+      br
+      =f.label "画像"
+      =f.file_field :photo_url ,{id:"file_input"}      
     = f.submit "メッセージを送信"

@@ -26,11 +26,42 @@ App.msg = App.cable.subscriptions.create { channel: "MsgChannel",room:getParam('
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
     console.log(data);
+    appendStr = ""
     if(data['message']['pic'])
-      $('.msg-list').append '<li><span>' + data['message']['sender_name'] + ':</span><br><span class="msg-content">' + data['message']['msg'] + '<br><img src="' + data['message']['pic'] + '"></span></li>'
+      appendStr = """
+        <li class='msg-item'>
+          <div class='table-row'>
+            <div class="msg-sender-img">
+              <img src="/assets/no-image-human.png">
+            </div>
+            <div class="msg-container">
+              #{data['message']['sender_name']}
+              <br>
+              <span class="msg-content">
+                #{data['message']['msg']}
+                <br>
+                <span class="msg-img"><img src="#{data['message']['pic']}"></span>
+              </span>
+            </div>
+          </div>
+        </li>
+      """
     else
-      $('.msg-list').append '<li><span>' + data['message']['sender_name'] + ':</span><br><span class="msg-content">' + data['message']['msg'] + '</span></li>'    
-
+      appendStr = """
+        <li class='msg-item'>
+          <div class='table-row'>
+            <div class="msg-sender-img">
+              <img src="/assets/no-image-human.png">
+            </div>
+            <div class="msg-container">
+              <span>#{data['message']['sender_name']}</span>
+              <br>
+              <span class="msg-content">#{data['message']['msg']}
+            </div>
+          </div>
+        </li>
+      """ 
+    $('.msg-list').append appendStr
   speak:(message) ->
     @perform 'speak', message: message
 

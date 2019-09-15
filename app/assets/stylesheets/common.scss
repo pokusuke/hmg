@@ -60,7 +60,9 @@ body{
   max-width: 100%;
   height: auto;
   margin:0 auto;
+  display:block;
 }
+
 .header{
   border-bottom:1px solid #333;
   padding:10px;
@@ -401,6 +403,7 @@ Component
     padding:10px;
     border:1px solid #eee;
   }
+
   th{
     font-weight: normal;
     background-color:#f6f5f4;
@@ -423,7 +426,11 @@ Component
     margin-left:1%;
   }
 }
-
+.search-result{
+  li {
+    list-style-type: none;
+  }
+}
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
 #map {

@@ -1,4 +1,4 @@
-h2.page-title = "チャットhoge　(#{@event.event_name})"
+h2.page-title = "チャット　(#{@event.event_name})"
 ul.msg-list
   - @event_msgs.each do |event_msg|
     =link_to url_for(:controller=>'event_msg_reps',:action=>'new',event_msg_id: event_msg.id),:class=>'msg-item-link' do 
@@ -12,7 +12,7 @@ ul.msg-list
           .msg-container
             = event_msg.user.name
             br
-            span.msg-content = event_msg.msg
+            = event_msg.msg
         - if event_msg.event_msg_reps.present?
           div.table-row
             div.msg-rep-num= ""

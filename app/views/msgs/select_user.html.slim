@@ -5,7 +5,10 @@ div.content
     =f.text_field :name
     br
     =f.submit "検索"
-  ul
+  ul.search-result
     - unless session[:query_users].nil?
       - session[:query_users].each do |query_user|
-        li= link_to query_user["nick_name"] , "/msgs/#{query_user['id']}"
+        - if current_user.id < query_user['id']
+            li= link_to query_user["nick_name"] , "/msgs/#{query_user['id']}&room=#{current_user.id}-#{query_user['id']}", :'data-turbolinks'=>false
+        - else
+            li= link_to query_user["nick_name"] , "/msgs/#{query_user['id']}&room=#{query_user['id']}-#{current_user.id}", :'data-turbolinks'=>false

@@ -1,23 +1,31 @@
+h2.page-title = "#{@recv_user.nick_name}"
 ul.msg-list#chat-index
   - @msgs.each do |msg|
-    -if msg.photo_url.url
-      li.msg-item
-        .msg-sender-img= image_tag msg.sender.avatar_path
-        .msg-container="#{msg.sender.nick_name}:"
-          br
-          span.msg-content=msg.msg
-           br
-           =image_tag msg.photo_url.url
-    - else
-      li.msg-item
-        - if msg.sender.avatar_path?
-          .msg-sender-img= image_tag msg.sender.avatar_path
+    li.msg-item
+      .table-row
+        -if msg.photo_url.url
+          .msg-sender-img
+            - if msg.sender.avatar_path?
+              = image_tag msg.sender.avatar_path
+            - else
+              = image_tag 'no-image-human.png'
+          .msg-container
+            = msg.sender.nick_name
+            br
+            span.msg-content
+              =msg.msg
+              br
+              span.msg-img=image_tag msg.photo_url.url
         - else
-          .msg-sender-image= image_tag 'no-image-human.png'
-        .msg-container
-          =msg.sender.nick_name
-          br
-          span.msg-content= msg.msg
+          .msg-sender-img
+            - if msg.sender.avatar_path?
+              = image_tag msg.sender.avatar_path
+            - else
+              = image_tag 'no-image-human.png'
+          .msg-container
+            =msg.sender.nick_name
+            br
+            span.msg-content= msg.msg
 =form_with model: Msg.new,url: "/msgs/#{params[:id]}" do |f|
   =f.label 'メッセージ'
   br

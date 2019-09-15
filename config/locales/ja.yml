@@ -31,6 +31,9 @@ ja:
       pref:
         pref_id: 都道府県コード
         pref_name: 都道府県
+      store:
+        name: 出店名
+        store_desc: 出店情報
   time:
     formats:
       full_date: "%Y年%m月%d日 (%a)"

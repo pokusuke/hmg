@@ -1,12 +1,11 @@
 div.content
   =form_with model: User.new,url: '/msgs/select_user' do |f|
-    =f.label '検索するユーザ名'
+    =f.label '検索するユーザ名hoho'
     br
     =f.text_field :name
     br
     =f.submit "検索"
-
-ul
+  ul
     - unless session[:query_users].nil?
       - session[:query_users].each do |query_user|
-        li= link_to query_user["name"] , "/msgs/#{query_user['id']}"
+        li= link_to query_user["nick_name"] , "/msgs/#{query_user['id']}"

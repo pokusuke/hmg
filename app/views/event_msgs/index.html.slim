@@ -1,16 +1,18 @@
-h2.page-title = "チャット　(#{@event.event_name})"
+h2.page-title = "チャットhoge　(#{@event.event_name})"
 ul.msg-list
   - @event_msgs.each do |event_msg|
     =link_to url_for(:controller=>'event_msg_reps',:action=>'new',event_msg_id: event_msg.id),:class=>'msg-item-link' do 
       li.msg-item
-        |
-          <div class="table-row">
-            <div class="msg-sender-img"><img src="#{event_msg.user.avatar_path}"></div>
-            <div class="msg-container">
-              #{event_msg.user.name}: <br>
-              <span class="msg-content">#{event_msg.msg}</span>
-            </div>
-          </div>
+        .table-row
+          .msg-sender-img
+            -if event_msg.user.avatar_path?
+              = image_tag event_msg.user.avatar_path
+            -else
+              = image_tag 'no-image-human.png'
+          .msg-container
+            = event_msg.user.name
+            br
+            span.msg-content = event_msg.msg
         - if event_msg.event_msg_reps.present?
           div.table-row
             div.msg-rep-num= ""

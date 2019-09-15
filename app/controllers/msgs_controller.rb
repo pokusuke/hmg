@@ -14,7 +14,7 @@ class MsgsController < ApplicationController
   def query_user
     session[:query_users] = nil
     query_users = query
-    session[:query_users] = query
+    session[:query_users] = query_users
     redirect_to "/msgs/select_user"
     #render action: "select_user"
   end
@@ -37,9 +37,10 @@ class MsgsController < ApplicationController
   private
     def query
       if params[:user].present? && !params[:user][:name].empty?
-        return User.where('name LIKE ?',"%#{params[:user][:name]}%")
+         users = User.where('nick_name LIKE ?',"%#{params[:user][:name]}%")
+         users
       else
-        return []
+         []
       end
     end
 end

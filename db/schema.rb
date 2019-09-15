@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_12_091804) do
+ActiveRecord::Schema.define(version: 2019_09_15_113215) do
 
   create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "area_name"
@@ -102,7 +102,6 @@ ActiveRecord::Schema.define(version: 2019_09_12_091804) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar_path"
-    t.string "password_digest"
     t.string "email"
     t.string "prof"
     t.string "encrypted_password", default: "", null: false

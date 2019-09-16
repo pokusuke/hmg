@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :events
   resources :event_apps do
     resources :stores
+  #  resources :event_msgs
   end
   #get '/login', to:'sessions#new'
   #post '/login',to:'sessions#create'

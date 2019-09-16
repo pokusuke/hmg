@@ -28,6 +28,8 @@ ja:
         photo_url4: 画像4
         pref_id: 都道府県
         user_id: ユーザ
+      event_msg:
+        msg: メッセージ
       pref:
         pref_id: 都道府県コード
         pref_name: 都道府県

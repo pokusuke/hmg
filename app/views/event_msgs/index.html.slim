@@ -35,7 +35,7 @@ ul.msg-list
 = form_with model:@event_msg,local:true do |f|
     .form-group
       = f.hidden_field :event_id, :value=>@event_id
-      = f.label 'メッセージ入力'
+      = f.label :msg
       br
       = f.text_area :msg,{class:"msg"}
       br

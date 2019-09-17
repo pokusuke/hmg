@@ -1,6 +1,11 @@
 h2.page-title= @user.nick_name
-p.prof-img= image_tag @user.avatar_path.url,:class => 'img-prof-thum-l' if @user.avatar_path?
-table.event-show
-  tr
-    th 自己紹介
-    td= simple_format(text_url_to_link(@user.prof))
+p.prof-img
+  - if @user.avatar_path?
+    = image_tag @user.avatar_path.url,:class => 'img-prof-thum-l'
+  - else
+    = image_tag 'no-image-human.png',:class => 'img-prof-thum-l'
+
+br
+h3 プロフィール
+br
+p= simple_format(text_url_to_link(@user.prof))

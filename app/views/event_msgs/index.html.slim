@@ -1,3 +1,5 @@
+p.back-to
+  | <a href="#{event_app_path(@event_app)}"><i class="fas fa-arrow-left"></i></a>
 h2.page-title = "チャット　(#{@event.event_name})"
 ul.msg-list
   - @event_msgs.each do |event_msg|

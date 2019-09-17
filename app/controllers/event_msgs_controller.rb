@@ -21,8 +21,8 @@ class EventMsgsController < ApplicationController
 
   private
   def event_app_auth
-    event_app = EventApp.find_by(event_id: params[:event_id],user_id:current_user.id)
-    if event_app.nil?
+    @event_app = EventApp.find_by(event_id: params[:event_id],user_id:current_user.id)
+    if @event_app.nil?
       redirect_to event_apps_path
     end
   end

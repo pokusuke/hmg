@@ -1,4 +1,7 @@
-h2.page-title = @event_app.event.event_name
+p.back-to
+  | <a href="#{event_apps_path}"><i class="fas fa-arrow-left"></i></a>
+
+h2.page-title= @event_app.event.event_name
 - if @event_app.event.photo_url1?
     p.title-img=image_tag @event_app.event.photo_url1.url,:class => 'img-thum'
 - else

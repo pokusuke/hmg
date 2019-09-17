@@ -38,7 +38,7 @@ class MsgsController < ApplicationController
   private
     def query
       if params[:user].present? && !params[:user][:name].empty?
-         users = User.where('nick_name LIKE ?',"%#{params[:user][:name]}%")
+         users = User.where('nick_name LIKE ? AND id !=?',"%#{params[:user][:name]}%",current_user.id)
          users
       else
          []

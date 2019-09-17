@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   protect_from_forgery
 
-#  rescue_from Exception, with: :render_500
-#  rescue_from ActiveRecord::RecordNotFound, with: :render_404
-#  rescue_from ActionController::RoutingError, with: :render_404
+  rescue_from Exception, with: :render_500
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  rescue_from ActionController::RoutingError, with: :render_404
   
 
   def routing_error

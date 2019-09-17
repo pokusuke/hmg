@@ -32,7 +32,10 @@ ul.msg-list
         - if event_msg.event_msg_reps.present?
           div.table-row
             div.msg-rep-num= ""
-            div.msg-rep-num= "#{event_msg.event_msg_reps.length}件の返信"
+            div.msg-rep-num
+              |
+                <i class="far fa-comment"></i>
+                #{event_msg.event_msg_reps.length}件の返信
 
 = form_with model:@event_msg,local:true do |f|
     .form-group

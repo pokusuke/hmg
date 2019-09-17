@@ -5,11 +5,25 @@
     nav.header-nav
         ul
             - if current_user!=nil
-                li= link_to 'イベント一覧',events_path
-                li= link_to '参加イベント',event_apps_path
-                li= link_to 'プロフィール編集',edit_user_path(current_user.id)
-                li= link_to 'メッセージ',msgs_index_path
-                li= link_to 'ログアウト',destroy_user_session_path,method: :delete
+                li= link_to events_path do
+                    = icon 'fas','search'
+                    = " イベント検索"
+                li= link_to event_apps_path do
+                    = icon 'fas','list'
+                    = " 参加イベント"
+                li= link_to edit_user_path(current_user.id) do
+                    = icon 'fas','user'
+                    = " プロフィール編集"
+                li= link_to msgs_index_path do
+                    = icon 'fas','envelope'
+                    = " メッセージ"
+                li= link_to destroy_user_session_path,:method=> :delete do
+                    = icon 'fas','sign-out-alt'
+                    = " ログアウト"
             - else
-                li= link_to 'イベント一覧',events_path
-                li= link_to 'ログイン',new_user_session_path
+                li= link_to events_path do
+                    = icon 'fas','search'
+                    = " イベント検索"
+                li= link_to new_user_session_path do
+                    = icon 'fas','sign-in-alt'
+                    = " ログイン"

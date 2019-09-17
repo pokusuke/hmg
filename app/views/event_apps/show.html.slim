@@ -9,9 +9,15 @@ h2.page-title= @event_app.event.event_name
 p= "開催日時: #{@event_app.event.event_date.strftime('%Y年%m月%d日')}"
 p= "主催者：　#{@event_app.event.user.name}"
 ul.event-app-btn-list
-  li= link_to 'チャット',{:controller=>'event_msgs',:action=>'index',event_id: @event_app.event_id},{:class=>'btn-min'}
-  li= link_to '出店情報',{:controller=>'stores',:action=>'index',event_app_id: @event_app.id},{:class=>"btn-min"}
+  li= link_to event_msgs_path(event_id: @event_app.event_id),:class=>'btn-min' do
+      = icon 'fas','comment'
+      = " チャット"
+  li= link_to event_app_stores_path(@event_app),:class=>'btn-min' do
+      = icon 'fas','store'
+      = " 出店情報"
   - if @event_app.event.user.id == current_user.id
-    li= link_to 'イベント編集',edit_event_path(@event_app.event),:class=>"btn-min"
+    li= link_to edit_event_path(@event_app.event),:class=>"btn-min" do
+      = icon 'fas','edit'
+      = " イベント編集"
   - else
     li= link_to '応募をやめる',event_app_path(@event_app),:class=>"btn-min",method: :delete, data:{ confirm: '応募を取り消します' }

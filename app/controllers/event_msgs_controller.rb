@@ -15,7 +15,9 @@ class EventMsgsController < ApplicationController
    event_msg.sender_id = current_user.id
    event_msg.msg = params[:event_msg][:msg]
    event_msg.photo_url = params[:event_msg][:photo_url]
-   event_msg.save!
+   if event_msg.msg.present? || event_msg.photo_url.present?
+      event_msg.save!
+   end
    redirect_to event_msgs_path(event_id: event_msg.event_id)
   end
 

@@ -31,7 +31,7 @@ table.event-show
     td
       - @event.event_apps.each do |event_app|
           -if event_app.stores.present?
-            span.event-app=link_to event_app.user.nick_name,{:controller=>'stores',:action=>'show',id: event_app.stores[0]}
+            span.event-app=link_to event_app.user.nick_name,event_app_store_path(event_app,event_app.stores[0])
           -else
             span.event-app=event_app.user.nick_name 
 

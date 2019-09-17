@@ -438,7 +438,18 @@ Component
 }
 .search-result{
   li {
-    list-style-type: none;
+      list-style-type: none;
+
+      border-bottom:1px dotted #eee;
+    a{
+      text-decoration: none;
+      color: #333;
+      display:block;
+      line-height: 30px;
+    }
+    a:hover{
+      background: #eee;
+    }
   }
 }
 /* Always set the map height explicitly to define the size of the div

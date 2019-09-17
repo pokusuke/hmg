@@ -6,7 +6,7 @@ class EventsController < ApplicationController
       @event_date_from = Time.zone.local(params["event_date_from(1i)"].to_i,params["event_date_from(2i)"].to_i,params["event_date_from(3i)"].to_i)
       @event_date_to = Time.zone.local(params["event_date_to(1i)"].to_i,params["event_date_to(2i)"].to_i,params["event_date_to(3i)"].to_i) if params["event_date_to(1i)"].present?
     else
-      @event_date_from = Time.zone.now 
+      @event_date_from = Time.now.to_date
       @event_date_to = nil  
     end
 

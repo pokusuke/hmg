@@ -17,7 +17,7 @@ describe "ログインのシステムテスト", type: :system do
     end
     it 'ログイン後のメニュー一覧が表示されること' do
       within '.header-nav' do
-        expect(page).to have_content 'イベント一覧'
+        expect(page).to have_content 'イベント検索'
         expect(page).to have_content '参加イベント'
         expect(page).to have_content 'プロフィール編集'
         expect(page).to have_content 'メッセージ'

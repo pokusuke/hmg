@@ -298,6 +298,15 @@ form{
 .event-app{
   margin-right:10px;
 }
+.event-app-list{
+  a{
+    text-decoration: none;
+    color: #333;
+  }
+  a:hover{
+    opacity: 0.8;
+  }
+}
 footer{
   background-color:#333;
   color:#fff;
@@ -456,7 +465,7 @@ Component
   .img-prof-thum-l{
     width:300px;;
     height:200px;
-    object-fit:cover;
+    object-fit:contain;
   }
 }
 .flash-msg{

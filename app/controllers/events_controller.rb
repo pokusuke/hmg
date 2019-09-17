@@ -2,34 +2,26 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only:[:new,:create,:destroy]
   PER = 10
   def index
+    if params[:commit]
+      @event_date_from = Time.zone.local(params["event_date_from(1i)"].to_i,params["event_date_from(2i)"].to_i,params["event_date_from(3i)"].to_i)
+      @event_date_to = Time.zone.local(params["event_date_to(1i)"].to_i,params["event_date_to(2i)"].to_i,params["event_date_to(3i)"].to_i) if params["event_date_to(1i)"].present?
+    else
+      @event_date_from = Time.zone.now 
+      @event_date_to = nil  
+    end
+
+    #events検索
+    @events = Event.all
+    #@pref = Pref.find(params:[:pref_id])
+    if @event_date_from
+      @events = @events.search_with_start(@event_date_from)
+    end
+    if @event_date_to
+      @events = @events.search_with_end(@event_date_to)
+    end
     if params[:pref_id].present?
       @pref = Pref.find(params[:pref_id])
-      if params[:commit]
-        event_date_from = Time.zone.local(params["event_date_from(1i)"].to_i,params["event_date_from(2i)"].to_i,params["event_date_from(3i)"].to_i)
-        if params["event_date_to(li)"]
-          event_date_to = Time.zone.local(params["event_date_to(1i)"].to_i,params["event_date_to(2i)"].to_i,params["event_date_to(3i)"].to_i)
-        else
-          event_date_to = nil
-        end
-      else
-        event_date_from = Time.zone.parse(params[:event_date_from])
-        event_date_to = nil
-      end
-      @event_date_from = event_date_from
-      @event_date_to = event_date_to
-      
-      #events検索
-      @events = Event.search_with_pref(params[:pref_id])
-      if @event_date_from
-        @events = @events.search_with_start(event_date_from)
-      end
-      if @event_date_to
-        @events = @events.search_with_end(event_date_to)
-      end
-
-    else 
-      @event_date_from = Time.zone.now
-      @events = Event.all
+      @events = @events.search_with_pref(params[:pref_id])
     end
     @events = @events.page(params[:page]).per(PER)
   end

@@ -13,7 +13,7 @@ table.event-show
     td= link_to @event.user.nick_name,{:controller=>'users',:action=>'show',id: @event.user}
   tr
     th 開催場所
-    td= "#{@event.pref.pref_name} #{@event.city} #{@event.place_detail}"
+    td#address= "#{@event.pref.pref_name} #{@event.city} #{@event.place_detail}"
   tr
     th 出店募集期間
     td= "#{@event.event_recruit_start_date.strftime('%Y年%m月%d日')} 〜 #{@event.event_recruit_end_date.strftime('%Y年%m月%d日')}"
@@ -46,11 +46,33 @@ br
     = f.submit '応募する' , {class: "submit"}
 
 javascript:
+  var geocoder;
   var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      });
+  function initMap() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var mapOptions = {
+      zoom: 15,
+      center: latlng
+    }
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    codeAddress();
   }
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1FMROrjTCfk4_lrVxxWnVpgfl9gKKR_4&callback=initMap" async defer></script>
+
+  function codeAddress() {
+    var address = document.getElementById('address').innerText;
+    console.log(address)
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHNdZARvABHOXfS0uBb6n5aCFxS-JAoho&callback=initMap" async defer></script>

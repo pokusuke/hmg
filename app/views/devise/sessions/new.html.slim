@@ -17,4 +17,8 @@ section.content
         = f.label :remember_me
     .actions
       = f.submit "ログイン"
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = f.hidden_field :email,{value: 'test@example.com'}
+    = f.hidden_field :password,{value: 'hogehoge'}
+    = f.submit "簡単ログイン"
     = render 'devise/shared/links'

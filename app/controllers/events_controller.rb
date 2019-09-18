@@ -23,7 +23,7 @@ class EventsController < ApplicationController
       @pref = Pref.find(params[:pref_id])
       @events = @events.search_with_pref(params[:pref_id])
     end
-    @events = @events.page(params[:page]).per(PER)
+    @events = @events.order(event_date: :asc).page(params[:page]).per(PER)
   end
 
   def new
@@ -55,6 +55,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @event_app = EventApp.find_by(event_id: @event.id, user_id: current_user.id)
   end
   
   def update

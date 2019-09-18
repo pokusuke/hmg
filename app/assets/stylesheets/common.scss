@@ -5,6 +5,21 @@
 $link_color: #2980b9;
 $main-color: rgb(250, 133, 133);
 
+/*ブレイクポイント*/
+$breakpoints: (
+  'sm': 'screen and (min-width: 480px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+/*ブレイクポイントのメディアクエリ*/
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
 
 body,p,h1,h2,h3,dl,dd,dt,ul,li{
   margin:0;
@@ -73,6 +88,7 @@ body{
   left:0;
   background-color:#fff;
   z-index:999;
+  overflow: hidden;
   h1 {
     font-size:16px;
     a{
@@ -87,21 +103,55 @@ body{
       width:35px;
       height:35px;
       background-image:url(image-path('menu.png'));
-
+      @include mq(md){
+        display:none;
+      }
     }
-  }  
+  }
+  .login-info{
+    float:right;
+    margin-right:50px;
+    .prof-img{
+      border:1px solid #333;
+      width:30px;
+      height:30px;
+      position: relative;
+      padding:5px;
+      border-radius: 50px;
+      img{
+        width:30px;
+        height:30px;
+      }
+    }
+    .prof-name{
+      text-align: center;
+    }
+  }
 }
 .header-nav{
   display:none;
+  a:hover{
+    color: $link_color;
+    text-decoration: none;
+  }
+  @include mq(md){
+    display:block;
+    float:left;
+    padding-right:10px;
+    li {
+      float:left;
+    }
+
+  }
 }
 .main{
-  padding-top:100px;
+  padding-top:120px;
   width:95%;
   margin-left:auto;
   margin-right:auto;
   margin-bottom:20px;
   text-align: center;
-  
+
   .page-title{
     font-size:16px;
     padding:10px;
@@ -112,6 +162,7 @@ body{
     text-align:center;
     width:300px;
     margin:0 auto;
+    clear: both;
   }
   .btn{
     text-decoration: none;
@@ -216,12 +267,22 @@ form{
   margin-top:5px;
   margin-bottom:15px;
 }
-.event-result a{
-  text-decoration: none;
-  color:#333;
+.event-result{
+   a{
+    text-decoration: none;
+    color:#333;
+    @include mq(md){
+      width:30%;
+      display:block;
+      float:left;
+      margin:1.5%;
+    }
+  }
+  overflow: hidden;
 }
 
 .event{
+  background-color:#fff;
   /*
     &:nth-child(odd){
       background-color:#f7f7f7;
@@ -302,9 +363,15 @@ form{
   a{
     text-decoration: none;
     color: #333;
-  }
-  a:hover{
-    opacity: 0.8;
+    overflow: hidden;
+    @include mq(md){
+      width:30%;
+      float:left;
+      margin-right:1.5%;
+      margin-left:1.5%;
+      display:block;
+
+    }
   }
 }
 footer{
@@ -406,6 +473,7 @@ Component
   padding:5px;
   border:1px solid #eee;
   box-shadow: 1px 1px 2px #aaa;
+  background-color:#fff;
   table{
     width: 100%;
   }

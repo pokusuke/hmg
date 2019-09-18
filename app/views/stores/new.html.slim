@@ -1,4 +1,6 @@
-h2 出店情報の新規作成
+p.back-to
+  | <a href="#{event_app_path(params[:event_app_id])}"><i class="fas fa-arrow-left"></i></a>
+h2.page-title 出店情報の新規作成
 = form_with model:@store,local:true,url:event_app_stores_path(@event_app_id) do |f|
   .form_group
     = f.label :name

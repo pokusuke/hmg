@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "新規ユーザ登録のシステムテスト", type: :system do
+describe '新規ユーザ登録のシステムテスト', type: :system do
   before do
     visit new_user_registration_path
   end
@@ -16,7 +16,7 @@ describe "新規ユーザ登録のシステムテスト", type: :system do
     it 'メールが送られること' do
       expect(ActionMailer::Base.deliveries.size).to eq(1)
     end
-    it 'ルートにリダイレクトされること' do  
+    it 'ルートにリダイレクトされること' do
       expect(current_path).to eq(root_path)
     end
     it '本人確認のメッセージが表示されること' do
@@ -31,7 +31,7 @@ describe "新規ユーザ登録のシステムテスト", type: :system do
     it 'メールが送られないこと' do
       expect(ActionMailer::Base.deliveries.size).to_not eq(1)
     end
-    it 'ルートにリダイレクトされないこと' do  
+    it 'ルートにリダイレクトされないこと' do
       expect(current_path).to_not eq(root_path)
     end
     it '名前のエラーメッセージが表示されること' do
@@ -42,6 +42,6 @@ describe "新規ユーザ登録のシステムテスト", type: :system do
     end
     it 'パスワードのエラーメッセージが表示されること' do
       expect(page).to have_content 'パスワードを入力してください'
-    end    
+    end
   end
 end

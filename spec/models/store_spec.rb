@@ -8,12 +8,12 @@ describe Store do
   it 'store_nameがないと無効なこと' do
     store = FactoryBot.build(:store, name: nil)
     store.valid?
-    expect(store.errors[:name]).to include "を入力してください"
+    expect(store.errors[:name]).to include 'を入力してください'
   end
-  
+
   it 'store_descが2001文字以上の場合無効なこと' do
-    store = FactoryBot.build(:store, store_desc: "a"*2001)
+    store = FactoryBot.build(:store, store_desc: 'a' * 2001)
     store.valid?
-    expect(store.errors[:store_desc]).to include "は2000文字以内で入力してください"    
+    expect(store.errors[:store_desc]).to include 'は2000文字以内で入力してください'
   end
 end

@@ -3,5 +3,5 @@ class Area < ApplicationRecord
   has_many :prefs
 
   # バリデーション
-  validates :area_name, presence:true, length:{ maximum: 50 },uniqueness:{case_sensitive: false}
+  validates :area_name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
 end

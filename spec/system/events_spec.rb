@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe "イベントのシステムテスト", type: :system do
+describe 'イベントのシステムテスト', type: :system do
   let(:user1) { FactoryBot.create(:user, name: 'ユーザ1') }
   let(:user2) { FactoryBot.create(:user, name: 'ユーザ2') }
-  let!(:pref) { FactoryBot.create(:pref, pref_id: '1',pref_name:'A県')}
-  
+  let!(:pref) { FactoryBot.create(:pref, pref_id: '1', pref_name: 'A県') }
+
   before do
     visit new_user_session_path
     fill_in 'user_email', with: login_user.email
@@ -12,9 +12,8 @@ describe "イベントのシステムテスト", type: :system do
     click_button 'ログイン'
   end
 
-
   describe 'イベント新規作成機能' do
-    let(:login_user){ user1 }
+    let(:login_user) { user1 }
 
     before do
       visit new_event_path
@@ -22,17 +21,17 @@ describe "イベントのシステムテスト", type: :system do
       select selected_pref, from: 'event_pref_id'
       click_button '登録する'
     end
-    
+
     context '正常な入力を行った場合' do
-      let(:event_name){ 'テストイベント' }
-      let(:selected_pref){ 'A県' }
-      it 'イベント一覧画面にリダイレクトされること' do  
+      let(:event_name) { 'テストイベント' }
+      let(:selected_pref) { 'A県' }
+      it 'イベント一覧画面にリダイレクトされること' do
         expect(current_path).to eq(events_path)
       end
       it 'イベント一覧画面でイベントが追加されていること' do
         expect(page).to have_content('テストイベント')
       end
-      it '登録成功のメッセージが表示されていること' do 
+      it '登録成功のメッセージが表示されていること' do
         expect(find('.flash-msg')).to have_content('イベントを登録しました')
       end
       it '参加イベント画面で作成したイベントが表示されていること' do
@@ -40,7 +39,7 @@ describe "イベントのシステムテスト", type: :system do
         expect(page).to have_content('テストイベント')
       end
     end
-    
+
     context '必須項目を入力しなかった場合' do
       let(:event_name) { nil }
       let(:selected_pref) { '選択してください' }
@@ -62,33 +61,34 @@ describe "イベントのシステムテスト", type: :system do
   end
 
   describe 'イベント編集機能' do
-    let(:login_user){ user1 }
-    let(:edit_event){ FactoryBot.create(
-      :event,
-      user: user1,
-      pref: pref,
-      event_recruit_start_date: Date.current.in_time_zone,
-      event_recruit_end_date: Date.current.in_time_zone
+    let(:login_user) { user1 }
+    let(:edit_event) do
+      FactoryBot.create(
+        :event,
+        user: user1,
+        pref: pref,
+        event_recruit_start_date: Date.current.in_time_zone,
+        event_recruit_end_date: Date.current.in_time_zone
       )
-    }
+    end
     before do
       visit edit_event_path(edit_event)
       fill_in 'イベント名', with: event_name
       select selected_pref, from: 'event_pref_id'
       click_button '登録する'
     end
-    
+
     context '正常な入力を行った場合' do
-      let(:event_name){ 'テストイベント2' }
-      let(:selected_pref){ 'A県' }
-      it 'イベント一覧画面にリダイレクトされないこと' do  
+      let(:event_name) { 'テストイベント2' }
+      let(:selected_pref) { 'A県' }
+      it 'イベント一覧画面にリダイレクトされないこと' do
         expect(current_path).to eq(event_path(edit_event))
       end
-      it '登録成功のメッセージが表示されていること' do 
+      it '登録成功のメッセージが表示されていること' do
         expect(find('.flash-msg')).to have_content('保存しました')
       end
     end
-    
+
     context '必須項目を入力しなかった場合' do
       let(:event_name) { nil }
       let(:selected_pref) { 'A県' }
@@ -103,15 +103,16 @@ describe "イベントのシステムテスト", type: :system do
   end
 
   describe 'イベント削除機能' do
-    let(:login_user){ user1 }
-    let(:edit_event){ FactoryBot.create(
-      :event,
-      user: user1,
-      pref: pref,
-      event_recruit_start_date: Date.current.in_time_zone,
-      event_recruit_end_date: Date.current.in_time_zone
+    let(:login_user) { user1 }
+    let(:edit_event) do
+      FactoryBot.create(
+        :event,
+        user: user1,
+        pref: pref,
+        event_recruit_start_date: Date.current.in_time_zone,
+        event_recruit_end_date: Date.current.in_time_zone
       )
-    }
+    end
     before do
       visit edit_event_path(edit_event)
       click_link '削除する'

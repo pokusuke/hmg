@@ -1,5 +1,5 @@
 class EventMsgRepsController < ApplicationController
-  before_action :authenticate_user!, only:[:index,:create,:new]
+  before_action :authenticate_user!, only: %i[index create new]
 
   def new
     @event_msg_reps = EventMsgRep.where(event_msg_id: params[:event_msg_id])

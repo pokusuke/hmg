@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe EventApp do
-  
-  it '有効なEventAppレコードが登録できること' do 
+  it '有効なEventAppレコードが登録できること' do
     expect(FactoryBot.create(:event_app)).to be_valid
   end
 
@@ -13,13 +12,13 @@ describe EventApp do
       :event_app,
       user: user,
       event: event
-      )
+    )
     other_event_app = FactoryBot.build(
       :event_app,
       user: user,
       event: event
     )
     other_event_app.valid?
-    expect(other_event_app.errors[:user_id]).to include "はすでに存在します"
+    expect(other_event_app.errors[:user_id]).to include 'はすでに存在します'
   end
 end

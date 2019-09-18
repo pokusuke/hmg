@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "ログインのシステムテスト", type: :system do
+describe 'ログインのシステムテスト', type: :system do
   before do
     visit new_user_session_path
   end
@@ -12,7 +12,7 @@ describe "ログインのシステムテスト", type: :system do
       fill_in 'user_password', with: user.password
       click_button 'ログイン'
     end
-    it 'ルートにリダイレクトされること' do  
+    it 'ルートにリダイレクトされること' do
       expect(current_path).to eq(root_path)
     end
     it 'ログイン後のメニュー一覧が表示されること' do
@@ -40,16 +40,16 @@ describe "ログインのシステムテスト", type: :system do
   end
   describe '本人認証が完了していないユーザのログインの場合' do
     before do
-      user = FactoryBot.create(:user,confirmed_at:nil)
+      user = FactoryBot.create(:user, confirmed_at: nil)
       fill_in 'user_email', with: user.email
       fill_in 'user_password', with: user.password
       click_button 'ログイン'
-    end 
+    end
     it 'ルートにリダイレクトされないこと' do
       expect(current_path).to_not eq(root_path)
     end
     it '本人認証を促すメッセージが表示されること' do
       expect(page).to have_content 'メールアドレスの本人確認が必要です。'
-    end      
+    end
   end
 end

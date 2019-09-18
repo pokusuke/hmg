@@ -8,20 +8,19 @@ describe Area do
   it 'area_nameがなければ無効なこと' do
     area = FactoryBot.build(:area, area_name: nil)
     area.valid?
-    expect(area.errors[:area_name]).to include "を入力してください"
+    expect(area.errors[:area_name]).to include 'を入力してください'
   end
 
   it 'area_nameは51文字以上は入力できないこと' do
-    area = FactoryBot.build(:area, area_name: "a"*52 )
+    area = FactoryBot.build(:area, area_name: 'a' * 52)
     area.valid?
-    expect(area.errors[:area_name]).to include "は50文字以内で入力してください"
+    expect(area.errors[:area_name]).to include 'は50文字以内で入力してください'
   end
 
-
   it 'area_nameは重複しないこと' do
-    FactoryBot.create(:area, area_name: "aaa")
-    area = FactoryBot.build(:area, area_name: "aaa")
+    FactoryBot.create(:area, area_name: 'aaa')
+    area = FactoryBot.build(:area, area_name: 'aaa')
     area.valid?
-    expect(area.errors[:area_name]).to include "はすでに存在します"
+    expect(area.errors[:area_name]).to include 'はすでに存在します'
   end
 end

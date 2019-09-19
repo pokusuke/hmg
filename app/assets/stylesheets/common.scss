@@ -50,12 +50,17 @@ input[type="submit"]{
 input[type="text"]{
   width:300px;
   height:30px;
+  border: 1px solid #ccc;
 
 }
 input[type="password"]{
   width:300px;
   height:30px;
+  border: 1px solid #ccc;
 
+}
+textarea{
+  border: 1px solid #ccc;
 }
 .desc{
   width:300px;

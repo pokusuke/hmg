@@ -32,7 +32,7 @@ App.msg = App.cable.subscriptions.create { channel: "MsgChannel",room:getParam('
         <li class='msg-item'>
           <div class='table-row'>
             <div class="msg-sender-img">
-              <img src="/assets/no-image-human.png">
+              <img src="#{data['message']['sender_pic']}">
             </div>
             <div class="msg-container">
               #{data['message']['sender_name']}
@@ -51,7 +51,7 @@ App.msg = App.cable.subscriptions.create { channel: "MsgChannel",room:getParam('
         <li class='msg-item'>
           <div class='table-row'>
             <div class="msg-sender-img">
-              <img src="/assets/no-image-human.png">
+              <img src="#{data['message']['sender_pic']}">
             </div>
             <div class="msg-container">
               <span>#{data['message']['sender_name']}</span>

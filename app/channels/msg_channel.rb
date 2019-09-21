@@ -18,6 +18,11 @@ class MsgChannel < ApplicationCable::Channel
       photo_url_data_uri: data['message']['pic']
     )
     data['message']['sender_name'] = current_user.name
+    if current_user.avatar_path?
+     data['message']['sender_pic'] = current_user.avatar_path.url
+    else
+     data['message']['sender_pic'] = "/assets/no-image-human.png"
+    end
     ActionCable.server.broadcast "msg_channel_#{params[:room]}", message: data['message']
   end
 end

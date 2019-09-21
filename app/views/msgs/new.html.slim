@@ -6,7 +6,7 @@ ul.msg-list#chat-index
         -if msg.photo_url.url
           .msg-sender-img
             - if msg.sender.avatar_path?
-              = image_tag msg.sender.avatar_path
+              = image_tag msg.sender.avatar_path.url
             - else
               = image_tag 'no-image-human.png'
           .msg-container
@@ -19,7 +19,7 @@ ul.msg-list#chat-index
         - else
           .msg-sender-img
             - if msg.sender.avatar_path?
-              = image_tag msg.sender.avatar_path
+              = image_tag msg.sender.avatar_path.url
             - else
               = image_tag 'no-image-human.png'
           .msg-container

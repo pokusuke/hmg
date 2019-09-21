@@ -9,7 +9,7 @@ ul.msg-list
         -if event_msg.photo_url.url
           .msg-sender-img
             - if event_msg.user.avatar_path?
-              = image_tag event_msg.user.avatar_path
+              = image_tag event_msg.user.avatar_path.url
             - else
               = image_tag 'no-image-human.png'
           .msg-container
@@ -22,7 +22,7 @@ ul.msg-list
         -else
           .msg-sender-img
             - if event_msg.user.avatar_path?
-              = image_tag event_msg.user.avatar_path
+              = image_tag event_msg.user.avatar_path.url
             - else
               = image_tag 'no-image-human.png'
           .msg-container

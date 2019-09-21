@@ -52,4 +52,6 @@ Rails.application.routes.draw do
  
   get '*not_found',to:'application#routing_error'
   post '*not_found',to:'application#routing_error'
+
+  mount ActionCable.server => '/cable'
 end

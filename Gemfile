@@ -49,7 +49,7 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'omniauth-twitch', '~> 1.0'
 gem 'omniauth-twitter', '~> 1.4'
-
+gem 'aws-ses','~> 0.6'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

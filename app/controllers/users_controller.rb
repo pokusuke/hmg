@@ -35,8 +35,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    log_out
-    redirect_to login_path
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path
   end
 
   def user_params

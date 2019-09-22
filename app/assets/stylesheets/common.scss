@@ -36,6 +36,7 @@ input[type="submit"]{
   height:35px;
   font-size:16px;
   background-color:#16A6B6;
+  border:none;
   border-radius: 5px;
   color:#fff;
   cursor: pointer;
@@ -256,6 +257,9 @@ body{
     width:98%;
     margin:0 auto;
     text-align:center;
+    @include mq(){
+      width:70%;
+    }
 
   }
   p.sign-up{
@@ -671,4 +675,8 @@ a.msg-item-link{
   a:hover{
     color:#aaa;
   }
+}
+.store-new{
+  width:300px;
+  margin: 0 auto;
 }

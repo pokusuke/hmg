@@ -3,7 +3,7 @@ p.back-to
 section.content
   h2.page-title 出店情報
   - if @store.nil?
-    p= link_to '新規作成',:controller=>'stores',:action=>'new',event_app_id: params[:event_app_id]
+    p.store-new= link_to '新規作成',new_event_app_store_path(params[:event_app_id]),:class=>'btn'
   - else
     = form_with method: :patch, model:@store, local:true, url: event_app_store_path(@store.event_id,@store.id) do |f|
       = f.hidden_field :store_id, :value=>@store.id

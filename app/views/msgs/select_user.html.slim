@@ -1,6 +1,6 @@
 div.content
   =form_with model: User.new,url: '/msgs/select_user' do |f|
-    =f.label '検索するユーザ名'
+    =f.label :name,'検索するユーザ名'
     br
     =f.text_field :name
     br

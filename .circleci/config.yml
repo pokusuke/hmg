@@ -42,7 +42,6 @@ jobs:
       # Database setup
       - run: bundle exec rails db:create --trace
       - run: bundle exec rails db:schema:load --trace
-      - run: bundle exec rails db:seed --trace
       # run tests!
       - run:
           name: Run rspec

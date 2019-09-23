@@ -28,7 +28,7 @@ development:
 test:
   <<: *default
   database: hmg_test
-  host: 'localhost'
+  host: <%= ENV['DB_HOST'] || 'localhost' %>
   port: 3306
   username: 'root'
   password: ''

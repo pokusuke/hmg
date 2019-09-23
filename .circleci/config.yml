@@ -15,7 +15,7 @@ jobs:
       - image: circleci/ruby:2.6.3-node-browsers-legacy
         environment:
           RAILS_ENV: test
-          DB_HOST: 'localhost'
+          DB_HOST: 127.0.0.1
           DB_USERNAME: 'root'
           DB_PASSWORD: ''
       - image: mysql:5.7

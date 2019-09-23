@@ -26,17 +26,18 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  host: <%= ENV['DB_HOST'] %>
+  host: 127.0.0.1
   adapter: mysql2
   encoding: utf8
   port: 3306
   pool: 5
   timeout: 10000
-  #socket: /var/lib/mysql/mysql.sock
   database: hmg_test
-  username: test
-  password: test
   #socket: /var/lib/mysql/mysql.sock
+  username: root
+  password:
+  
+  #socket: lib/mysql/mysql.sock
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

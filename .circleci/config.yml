@@ -18,13 +18,7 @@ jobs:
           DB_HOST: 127.0.0.1
       - image: mysql:5.7
         environment:
-          MYSQL_DATABASE: hmg_test
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_USER: test
-          MYSQL_PASSWORD: test
           MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_HOST: '%'
     working_directory: ~/hmg
     steps:
       - checkout

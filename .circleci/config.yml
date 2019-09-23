@@ -1,56 +1,72 @@
 version: 2.1
 jobs:
-  Hello-World:
+  checkout_code:
     docker:
-      - image: alpine
-    steps:
-      - run:
-          name: Hello World
-          command: |
-            echo 'Hello World!'
-            echo 'test'
-  I-Have-Code:    
-    docker:
-      - image: alpine:3.7
+      - image: circleci/ruby:2.6.3-node-browsers-legacy
+    working_directory: ~/eStreak
     steps:
       - checkout
-      - run:
-          name: Code Has Arrived
-          command: |
-            ls -al
-            echo '^^^ That should look familiar'
-  Run-With-Node:
+      - save_cache:
+          key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/hmg
+  test:
     docker:
-      - image: circleci/node:10-browsers
+      - image: circleci/ruby:2.6.3-node-browsers-legacy
+        environment:
+          RAILS_ENV: test
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_USERNAME: 'root'
+          MYSQL_PASSWORD: ''
+          MYSQL_PORT: 3306
+      - image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: hmg_test
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_HOST: '%'
+    working_directory: ~/hmg
     steps:
+      - checkout
+      - restore_cache:
+          key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "Gemfile.lock" }}
+          - v2-dependencies-
       - run:
-          name: Running in Unique Container
+          name: install dependencies
           command: |
-            node -v
-  Now-Complete:
-    docker:
-      - image: alpine:3.7
-    steps:
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+          - ./vendor/bundle
+          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
+      # Database setup
+      - run: rm ./config/database.yml
+      - run: mv ./config/database.yml.ci ./config/database.yml
       - run:
-          name: Approval Complete
+          name: Prepare db
           command: |
-            echo 'Do work onece the approval has completed'
+            bundle exec rake db:create db:schema:load --trace
+      # run tests!
+      - run:
+          name: Run rspec
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            bundle exec rspec --format progress --color --format documentation
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
 workflows:
-  version: 2
-  Example_Workflow:
+  version: 2.1
+  test_and_deploy:
     jobs:
-      - Hello-World
-      - I-Have-Code:
+      - checkout_code
+      - test:
           requires:
-            - Hello-World
-      - Run-With-Node:
-          requires:
-            - Hello-World
-      - Hold-For-Approval:
-          type: approval
-          requires:
-            - Run-With-Node
-            - I-Have-Code
-      - Now-Complete:
-          requires:
-            - Hold-For-Approval
+            - checkout_code

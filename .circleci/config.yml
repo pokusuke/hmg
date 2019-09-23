@@ -19,6 +19,10 @@ jobs:
           DB_USERNAME: 'root'
           DB_PASSWORD: ''
       - image: mysql:5.7
+        environment:
+          MYSQL_DATABASE: hmg_test
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_HOST: '%'
     working_directory: ~/hmg
     steps:
       - checkout

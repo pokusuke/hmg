@@ -32,7 +32,7 @@ test:
   port: 3306
   pool: 5
   timeout: 10000
-  socket: /var/lib/mysql/mysql.sock
+  #socket: /var/lib/mysql/mysql.sock
   database: hmg_test
   username: test
   password: test

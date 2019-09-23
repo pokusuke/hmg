@@ -1,15 +1,15 @@
 version: 2.1
 jobs:
-  checkout_code:
-    docker:
-      - image: circleci/ruby:2.6.3-node-browsers-legacy
-    working_directory: ~/hmg
-    steps:
-      - checkout
-      - save_cache:
-          key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - ~/hmg
+  #checkout_code:
+  #  docker:
+  #    - image: circleci/ruby:2.6.3-node-browsers-legacy
+  #  working_directory: ~/hmg
+  #  steps:
+  #    - checkout
+  #    - save_cache:
+  #        key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
+  #        paths:
+  #          - ~/hmg
   test:
     docker:
       - image: circleci/ruby:2.6.3-node-browsers-legacy
@@ -67,7 +67,7 @@ workflows:
   version: 2.1
   test_and_deploy:
     jobs:
-      - checkout_code
-      - test:
-          requires:
-            - checkout_code
+      #- checkout_code
+      - test
+          #requires:
+          #  - checkout_code

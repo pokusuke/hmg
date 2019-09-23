@@ -18,6 +18,8 @@ jobs:
           DB_HOST: 127.0.0.1
       - image: mysql:5.7
         environment:
+          MYSQL_USER: test
+          MYSQL_PASSWORD: test
           MYSQL_ALLOW_EMPTY_PASSWORD: true
     working_directory: ~/hmg
     steps:

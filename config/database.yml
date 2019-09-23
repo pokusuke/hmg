@@ -19,8 +19,8 @@ test:
   pool: 5
   timeout: 10000
   database: hmg_test
-  username: root
-  password:
+  username: test
+  password: test
   
 production:
   <<: *default

@@ -63,5 +63,6 @@ workflows:
     jobs:
       #- checkout_code
       - test
+          context: hmg
           #requires:
           #  - checkout_code

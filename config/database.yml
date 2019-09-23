@@ -28,11 +28,11 @@ development:
 test:
   <<: *default
   database: hmg_test
-  host: 127.0.0.1
+  host: 'localhost'
   port: 3306
-  username: 'root'
-  password: ''
-  socket: /var/lib/mysql/mysql.sock
+  username: 'test'
+  password: 'test'
+  #socket: /var/lib/mysql/mysql.sock
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

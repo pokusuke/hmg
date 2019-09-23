@@ -557,6 +557,18 @@ Component
     object-fit:contain;
   }
 }
+.title-img{
+  width:100%;
+}
+.title-img-thum-l{
+  width:90%;
+  height:200px;
+  object-fit:cover;
+  @include mq(){
+    height:300px;
+  }
+
+}
 .flash-msg{
   border-radius: 3px;
   height:30px;

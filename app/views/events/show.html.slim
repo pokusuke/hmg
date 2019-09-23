@@ -1,7 +1,7 @@
 div.content
   h2.page-title= @event.event_name
   - if @event.photo_url1?
-      p.title-img=image_tag @event.photo_url1.url,:class => 'img-prof-thum-l'
+      p.title-img=image_tag @event.photo_url1.url,:class => 'title-img-thum-l'
   - else
       p.title-img=image_tag 'no-image.png',:class => 'img-thum-l'
   br 

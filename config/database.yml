@@ -34,8 +34,8 @@ test:
   timeout: 10000
   socket: /var/lib/mysql/mysql.sock
   database: hmg_test
-  username: root
-  password: ''
+  username: test
+  password: test
   #socket: /var/lib/mysql/mysql.sock
 
 # As with config/secrets.yml, you never want to store sensitive information,

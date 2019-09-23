@@ -15,15 +15,10 @@ jobs:
       - image: circleci/ruby:2.6.3-node-browsers-legacy
         environment:
           RAILS_ENV: test
-          MYSQL_HOST: localhost
-          MYSQL_USERNAME: 'test'
-          MYSQL_PASSWORD: 'test'
-          MYSQL_PORT: 3306
+          DB_HOST: localhost
+          DB_USERNAME: 'root'
+          DB_PASSWORD: ''
       - image: mysql:5.7
-        environment:
-          MYSQL_DATABASE: hmg_test
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_HOST: '%'
     working_directory: ~/hmg
     steps:
       - checkout

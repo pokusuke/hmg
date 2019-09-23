@@ -42,6 +42,13 @@ jobs:
       # Database setup
       - run: bundle exec rails db:create --trace
       - run: bundle exec rails db:schema:load --trace
+      # ChromeDriver Update
+      - run:
+          name: Update ChromeDriver Version
+          command: |
+            CHROME_VERSION=$(google-chrome --version | sed -r 's/[^0-9]+([0-9]+\.[0-9]+\.[0-9]+).*/\1/g')
+            CHROMEDRIVER_VERSION=$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
+            bundle exec chromedriver-update $CHROMEDRIVER_VERSION      
       # run tests!
       - run:
           name: Run rspec

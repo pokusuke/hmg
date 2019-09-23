@@ -62,7 +62,7 @@ workflows:
   test_and_deploy:
     jobs:
       #- checkout_code
-      - test
+      - test:
           context: hmg
           #requires:
           #  - checkout_code

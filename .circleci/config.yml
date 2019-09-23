@@ -15,7 +15,7 @@ jobs:
       - image: circleci/ruby:2.6.3-node-browsers-legacy
         environment:
           RAILS_ENV: test
-          DB_HOST: localhost
+          DB_HOST: 127.0.0.1
           DB_USERNAME: 'root'
           DB_PASSWORD: ''
       - image: mysql:5.7
@@ -40,11 +40,13 @@ jobs:
           paths:
           - ./vendor/bundle
           key: v2-dependencies-{{ checksum "Gemfile.lock" }}
-      # Database setup
       - run:
-          name: Prepare db
-          command: |
-            bundle exec rake db:create db:schema:load db:seed --trace
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+      # Database setup
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+      - run: bundle exec rake db:seed
       # run tests!
       - run:
           name: Run rspec

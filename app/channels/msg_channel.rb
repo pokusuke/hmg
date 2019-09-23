@@ -21,7 +21,7 @@ class MsgChannel < ApplicationCable::Channel
     if current_user.avatar_path?
      data['message']['sender_pic'] = current_user.avatar_path.url
     else
-     data['message']['sender_pic'] = asset-path("no-image-human.png")
+     data['message']['sender_pic'] = asset_path("no-image-human.png")
     end
     ActionCable.server.broadcast "msg_channel_#{params[:room]}", message: data['message']
   end

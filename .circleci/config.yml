@@ -16,6 +16,7 @@ jobs:
         environment:
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
+          TZ: Asia/Tokyo
       - image: mysql:5.7
         environment:
           MYSQL_USER: test

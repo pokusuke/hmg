@@ -56,6 +56,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    @event_app = EventApp.find_by(event_id: @event.id, user_id: current_user.id)
     if @event.update(formatted_event_params)
       flash.now[:success] = '保存しました'
     else

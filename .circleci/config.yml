@@ -3,7 +3,7 @@ jobs:
   checkout_code:
     docker:
       - image: circleci/ruby:2.6.3-node-browsers-legacy
-    working_directory: ~/eStreak
+    working_directory: ~/hmg
     steps:
       - checkout
       - save_cache:

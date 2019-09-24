@@ -1,21 +1,22 @@
-p.back-to
-  | <a href="#{event_app_path(params[:event_app_id])}"><i class="fas fa-arrow-left"></i></a>
 section.content
-  h2.page-title 出店情報
-  - if @store.nil?
-    p.store-new= link_to '新規作成',new_event_app_store_path(params[:event_app_id]),:class=>'btn'
-  - else
-    = form_with method: :patch, model:@store, local:true, url: event_app_store_path(@store.event_id,@store.id) do |f|
-      = f.hidden_field :store_id, :value=>@store.id
-      .form_group
-        = f.label :name
-        br
-        = f.text_field :name
-        - if @store.errors[:name].any?
-          span.form-error= @store.errors.full_messages_for(:name)[0]        
-      .form_group
-        = f.label :store_desc
-        br
-        = f.text_area :store_desc, :class=>'desc'
-      = f.submit "登録"
-      p.event-new=link_to '削除する',event_app_store_path(@store.event_app_id,@store.id),:class=>"btn-min",method: :delete, data:{ confirm: '本当に削除してよろしいでしょうか？' }
+  p.back-to
+    | <a href="#{event_app_path(params[:event_app_id])}"><i class="fas fa-arrow-left"></i></a>
+  div.content-item  
+    h2.page-title 出店情報
+    - if @store.nil?
+      p.store-new= link_to '新規作成',new_event_app_store_path(params[:event_app_id]),:class=>'btn'
+    - else
+      = form_with method: :patch, model:@store, local:true, url: event_app_store_path(@store.event_id,@store.id) do |f|
+        = f.hidden_field :store_id, :value=>@store.id
+        .form_group
+          = f.label :name
+          br
+          = f.text_field :name
+          - if @store.errors[:name].any?
+            span.form-error= @store.errors.full_messages_for(:name)[0]        
+        .form_group
+          = f.label :store_desc
+          br
+          = f.text_area :store_desc, :class=>'desc'
+        = f.submit "登録"
+        p.event-new=link_to '削除する',event_app_store_path(@store.event_app_id,@store.id),:class=>"btn-min",method: :delete, data:{ confirm: '本当に削除してよろしいでしょうか？' }

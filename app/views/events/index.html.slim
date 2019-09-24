@@ -19,11 +19,12 @@ section.search-config
                 <br>
               #{f.date_select :event_date_to, selected:@event_date_to, use_month_numbers: true, include_blank:true, date_separator: '/'}
       = f.submit "検索する"
-- if @pref
-  h2.page-title= "#{@pref.pref_name}のハンドメイドイベント"
-- else
-  h2.page-title= "全国のハンドメイドイベント"      
+     
 section.event-result
+  - if @pref
+    h2.page-title= "#{@pref.pref_name}のハンドメイドイベント"
+  - else
+  h2.page-title= "全国のハンドメイドイベント" 
   -if @events.present?
     -@events.each do |event|
       =link_to event_path(event) do 

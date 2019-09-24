@@ -1,36 +1,37 @@
 section.content
-  h2.page-title ユーザ登録
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    .form-group
-      = f.label :name
-      br
-      - if resource.errors[:name].any?
-         = f.text_field :name, autofocus: true, autocomplete: "ユーザ名",:class=>"input-error"
-         span.form-error= resource.errors.full_messages_for(:name)[0]
-      - else
-         = f.text_field :name, autofocus: true, autocomplete: "ユーザ名"
+   div.content-item
+      h2.page-title ユーザ登録
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+         .form-group
+            = f.label :name
+            br
+            - if resource.errors[:name].any?
+               = f.text_field :name, autofocus: true, autocomplete: "ユーザ名",:class=>"input-error"
+               span.form-error= resource.errors.full_messages_for(:name)[0]
+            - else
+               = f.text_field :name, autofocus: true, autocomplete: "ユーザ名"
 
-    .form-group
-      = f.label :email
-      br
-      - if resource.errors[:email].any?
-         = f.text_field :email, autofocus: true, autocomplete: "メールアドレス",:class=>"input-error"
-         span.form-error= resource.errors.full_messages_for(:email)[0]
-      - else
-         = f.text_field :email, autofocus: true, autocomplete: "メールアドレス"
+         .form-group
+            = f.label :email
+            br
+            - if resource.errors[:email].any?
+               = f.text_field :email, autofocus: true, autocomplete: "メールアドレス",:class=>"input-error"
+               span.form-error= resource.errors.full_messages_for(:email)[0]
+            - else
+               = f.text_field :email, autofocus: true, autocomplete: "メールアドレス"
 
-    .form-group
-      = f.label :password
-      br
-      - if resource.errors[:password].any?
-         = f.password_field :password, autofocus: true, autocomplete: "新しいパスワード",:class=>"input-error"
-         span.form-error= resource.errors.full_messages_for(:password)[0]
-      - else
-         = f.password_field :password, autofocus: true, autocomplete: "新しいパスワード"
+         .form-group
+            = f.label :password
+            br
+            - if resource.errors[:password].any?
+               = f.password_field :password, autofocus: true, autocomplete: "新しいパスワード",:class=>"input-error"
+               span.form-error= resource.errors.full_messages_for(:password)[0]
+            - else
+               = f.password_field :password, autofocus: true, autocomplete: "新しいパスワード"
 
-    .field
-      = f.label :password_confirmation
-      br
-      = f.password_field :password_confirmation, autocomplete: "新しいパスワード"
-    .actions
-      = f.submit "登録"
+         .field
+            = f.label :password_confirmation
+            br
+            = f.password_field :password_confirmation, autocomplete: "新しいパスワード"
+         .actions
+            = f.submit "登録"

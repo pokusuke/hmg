@@ -4,6 +4,15 @@
 /*変数*/
 $link_color: #2980b9;
 $main-color: rgb(250, 133, 133);
+$head-color: #d70146;
+$body-color: #f3f2ec;
+$btn-color: #d72e64;
+$footer-color: #3e3e3e;
+$back-color:#fafaf9;
+$input-color:#ebebe8;
+
+
+
 
 /*ブレイクポイント*/
 $breakpoints: (
@@ -52,16 +61,28 @@ input[type="text"]{
   width:300px;
   height:30px;
   border: 1px solid #ccc;
+  background-color:$input-color;
+  border:none;
+  padding:5px;
+  border-radius: 3px;
 
 }
 input[type="password"]{
   width:300px;
   height:30px;
   border: 1px solid #ccc;
+  background-color:$input-color;
+  border:none;
+  padding:5px;
+  border-radius: 3px;  
 
 }
 textarea{
   border: 1px solid #ccc;
+  background-color:$input-color;
+  border:none;
+  padding:5px;
+  border-radius: 3px;  
 }
 .desc{
   width:300px;
@@ -76,6 +97,7 @@ body{
   font-family: 'Noto Sans JP', sans-serif;
   font-size:14px;
   color:#333;
+  background-color: $body-color;
 }
 .msg-content img{
   /*max-width: 100%;*/
@@ -86,20 +108,21 @@ body{
 }
 
 .header{
-  border-bottom:1px solid #333;
+  /*border-bottom:1px solid #333;*/
+  box-shadow:1px 0px 1px #aaa ;
   padding:10px;
   position: fixed;
   width:100%;
   top:0;
   left:0;
-  background-color:#fff;
+  background-color:white;
   z-index:999;
   overflow: hidden;
   h1 {
-    font-size:16px;
+    font-size:16px; 
     a{
       text-decoration: none;
-      color:$main-color;
+      color: $main-color;
     }
   }
   #menu{
@@ -119,14 +142,14 @@ body{
     margin-right:50px;
     .prof-img{
       border:1px solid #333;
-      width:30px;
-      height:30px;
-      position: relative;
+      width:25px;
+      height:25px;
       padding:5px;
+      margin-bottom:0;
       border-radius: 50px;
       img{
-        width:30px;
-        height:30px;
+        width:25px;
+        height:25px;
         border-radius:100px;
       }
     }
@@ -137,6 +160,8 @@ body{
 }
 .header-nav{
   display:none;
+  background-color:white;
+  width:80%;
   a:hover{
     color: $link_color;
     text-decoration: none;
@@ -153,7 +178,7 @@ body{
 }
 .main{
   padding-top:120px;
-  width:95%;
+  width:100%;
   margin-left:auto;
   margin-right:auto;
   margin-bottom:20px;
@@ -212,8 +237,9 @@ body{
     width:100%;
     border-radius: 10px;
     height:3.5em;
-    border:1px solid #999;
+    /*border:1px solid #999;*/
     resize:none;
+  
   }
   .event-history{
     width:300px;
@@ -255,13 +281,24 @@ body{
     background-color:#f7f7f7;
   }
   .content{
-    width:98%;
+    width:100%;
     margin:0 auto;
     text-align:center;
+    overflow: hidden;
     @include mq(){
-      width:70%;
+      width:80%;
     }
-
+  }
+  .content-item{
+    width:90%;
+    @include mq(){
+      width: 80%;
+    }
+    background-color:white;
+    margin:20px auto;
+    padding:10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px #eee;
   }
   p.sign-up{
     width:150px;
@@ -276,8 +313,34 @@ form{
 .form-group{
   margin-top:5px;
   margin-bottom:15px;
+  select{
+    height:40px;
+    font-size: 14px;
+    border:none;
+    width:300px;
+    background-color:$input-color;
+  }  
+  &.date-select{
+    select{
+      height:40px;
+      font-size: 14px;
+      border:none;
+      margin-right:5px;
+      margin-left:5px;
+      width:85px;
+      background-color:$input-color;
+    }    
+  }
 }
 .event-result{
+   background-color:#fff;
+   width:90%;
+   margin: 0 auto;
+   padding:5px;
+   border-radius: 5px;
+   @include mq(){
+    width:80%;
+  }   
    a{
     text-decoration: none;
     color:#333;
@@ -293,6 +356,9 @@ form{
 
 .event{
   background-color:#fff;
+  width:95%;
+  margin:0 auto;
+
   /*
     &:nth-child(odd){
       background-color:#f7f7f7;
@@ -305,13 +371,16 @@ form{
     border:1px solid #eee;
     box-shadow: 1px 1px 3px #aaa;
     margin-bottom:15px;
+    @include mq(){
+      border-radius: 5px;
+    }
     dt{
       text-align: center;
       font-weight: bold;
       padding:10px;
-      border-bottom:1px dotted #eee;
-      color: #2980b9;
-      background-color:#f6f5f4;
+      /*border-bottom:1px dotted #eee;*/
+      color: #333;
+      background-color:#d1ccc0;
     }
     dd{
       padding:10px;
@@ -337,11 +406,14 @@ form{
 .event-show{
   width:90%;
   margin:0 auto;
+  font-size:14px;
   th{
     background-color:#f7f7f7;
     text-align: left;
     padding:5px;
     width:20%;
+    color:#666;
+    font-weight: normal;
   }
   td{
     padding:5px;
@@ -370,6 +442,11 @@ form{
   margin-right:10px;
 }
 .event-app-list{
+  background-color:white;
+  overflow: hidden;
+  padding:10px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px #aaa;
   a{
     text-decoration: none;
     color: #333;
@@ -401,6 +478,9 @@ nav{
     margin-right:10px;
     padding:10px;
     border-bottom:1px dotted #eee;
+    @include mq(){
+      border:none;
+    }
     a{
       text-decoration: none;
       color:#333;
@@ -462,14 +542,15 @@ table{
   }
 }
 /*
-Component
+Componentf
 */
 .label{
-  background: #f6f5f4;
+  /*background: #f6f5f4;*/
   display:block;
   height:30px;
   line-height:30px;
   font-weight: bold;
+  margin:0;
 }
 
 .event-app-btn-list li{
@@ -482,10 +563,17 @@ Component
   margin-bottom:20px;
   padding:5px;
   border:1px solid #eee;
-  box-shadow: 1px 1px 2px #aaa;
+  border-radius: 5px;
+  /*box-shadow: 1px 1px 2px #aaa;*/
   background-color:#fff;
+  width:90%;
+  margin: 20px auto;
+  @include mq(){
+    width:80%;
+  }
   table{
-    width: 100%;
+    width: 95%;
+    margin: 0 auto;
   }
   th,td{
     padding:10px;
@@ -500,18 +588,24 @@ Component
   td{
     text-align: center;
   }
+  
   .select-pref select{
     width:100%;
-    height:30px;
+    height:40px;
     display: block;
     font-size: 14px;
+    border:none;
+    background-color:$input-color;
+    
   }
   .select-date select{
     width: 27%;
-    height:30px;
+    height:40px;
     font-size:14px;
     margin-right:1%;
     margin-left:1%;
+    border:none;
+    background-color:$input-color;    
   }
 }
 .search-result{
@@ -681,6 +775,7 @@ a.msg-item-link{
   text-align: left;
   font-size:20px;
   margin-top:10px;
+  padding-left:20px;
   a{
     text-decoration: none;
     color:#333;

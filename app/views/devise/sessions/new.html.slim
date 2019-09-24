@@ -1,24 +1,25 @@
 section.content
-  h2.page-title ログイン
-  - flash.each do |name, msg|
-    p.flash-msg.alert-error= msg    
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .form-group
-      = f.label :email
-      br
-      = f.text_field :email, autofocus: true, autocomplete: "email"
-    .form-group
-      = f.label :password
-      br
-      = f.password_field :password, autocomplete: "current-password"
-    - if devise_mapping.rememberable?
+  div.content-item
+    h2.page-title ログイン
+    - flash.each do |name, msg|
+      p.flash-msg.alert-error= msg    
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group
-        = f.check_box :remember_me
-        = f.label :remember_me
-    .actions
-      = f.submit "ログイン"
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    = f.hidden_field :email,{value: 'test@example.com'}
-    = f.hidden_field :password,{value: 'hogehoge'}
-    = f.submit "簡単ログイン"
-    = render 'devise/shared/links'
+        = f.label :email
+        br
+        = f.text_field :email, autofocus: true, autocomplete: "email"
+      .form-group
+        = f.label :password
+        br
+        = f.password_field :password, autocomplete: "current-password"
+      - if devise_mapping.rememberable?
+        .form-group
+          = f.check_box :remember_me
+          = f.label :remember_me
+      .actions
+        = f.submit "ログイン"
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.hidden_field :email,{value: 'test@example.com'}
+      = f.hidden_field :password,{value: 'hogehoge'}
+      = f.submit "簡単ログイン"
+      = render 'devise/shared/links'

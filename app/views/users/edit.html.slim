@@ -1,28 +1,29 @@
 div.content
-  h2.page-title プロフィール編集
-  = form_with model:@user,local:true,multipart:true do |f|
-    .form-group
-      = f.label "名前"
-      br
-      = f.text_field :name
-    .form-group
-      = f.label "ニックネーム"
-      br
-      = f.text_field :nick_name
-    .form-group
-      = f.label "email"
-      br
-      = f.text_field :email      
-    .form-group
-      = f.label "自己紹介"
-      br
-      = f.text_area :prof,:class => 'desc'
+  div.content-item
+    h2.page-title プロフィール編集
+    = form_with model:@user,local:true,multipart:true do |f|
+      .form-group
+        = f.label "名前"
+        br
+        = f.text_field :name
+      .form-group
+        = f.label "ニックネーム"
+        br
+        = f.text_field :nick_name
+      .form-group
+        = f.label "email"
+        br
+        = f.text_field :email      
+      .form-group
+        = f.label "自己紹介"
+        br
+        = f.text_area :prof,:class => 'desc'
 
-    .form-group
-      = f.label "プロフィール画像"
-      br
-      = image_tag @user.avatar_path.url if @user.avatar_path?
-      br
-      br
-      = f.file_field :avatar_path
-    = f.submit "保存"
+      .form-group
+        = f.label "プロフィール画像"
+        br
+        = image_tag @user.avatar_path.url if @user.avatar_path?
+        br
+        br
+        = f.file_field :avatar_path
+      = f.submit "保存"

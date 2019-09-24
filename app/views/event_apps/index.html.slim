@@ -1,8 +1,8 @@
 div.content
   p.event-new= link_to 'イベントを新規作成',new_event_path, {:class => "btn"}
   br
-  h2.page-title 参加イベント一覧
   section.event-app-list
+    h2.page-title 参加イベント一覧
     -if @event_apps.empty?
       p 参加予定のイベントはありません。
     -@event_apps.each do |event_app|

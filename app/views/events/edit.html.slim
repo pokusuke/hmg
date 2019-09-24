@@ -1,6 +1,8 @@
-p.back-to
-  | <a href="#{event_app_path(@event_app.id)}"><i class="fas fa-arrow-left"></i></a>
+
 div.content
-  h2.page-title イベント編集
-  = render 'events/form'
-  p.event-new=link_to '削除する',event_path(@event),:class=>"btn-min",method: :delete, data:{ confirm: '本当に削除してよろしいでしょうか？' }
+  p.back-to
+    | <a href="#{event_app_path(@event_app.id)}"><i class="fas fa-arrow-left"></i></a>
+  div.content-item
+    h2.page-title イベント編集
+    = render 'events/form'
+    p.event-new=link_to '削除する',event_path(@event),:class=>"btn-min",method: :delete, data:{ confirm: '本当に削除してよろしいでしょうか？' }

@@ -24,7 +24,7 @@ section.event-result
   - if @pref
     h2.page-title= "#{@pref.pref_name}のハンドメイドイベント"
   - else
-  h2.page-title= "全国のハンドメイドイベント" 
+    h2.page-title= "全国のハンドメイドイベント" 
   -if @events.present?
     -@events.each do |event|
       =link_to event_path(event) do 

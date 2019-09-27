@@ -5,8 +5,8 @@ test:
   adapter: async
 
 production:
-  adapter: redis
-  port: 6379
-  url: redis://hmg-redis.qyn5ap.ng.0001.apne1.cache.amazonaws.com:6379
+  #adapter: redis
+  #port: 6379
+  #url: redis://hmg-redis.qyn5ap.ng.0001.apne1.cache.amazonaws.com:6379
   #channel_prefix: hmg_production
-  #adapter: async
+  adapter: async

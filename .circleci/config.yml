@@ -69,8 +69,8 @@ workflows:
           name: 'build-rails-app'
           requires:
             - test
-          account-url: "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com"
-          extra-build-args: "--build-arg RAILS_MASTER_KEY=$RAILS_MASTER_KEY"
+          account-url: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
+          extra-build-args: '--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}'
           repo: '${MY_APP_PREFIX_RAILS}'
           region: '${AWS_REGION}'
           tag: '${CIRCLE_SHA1}'
@@ -78,7 +78,7 @@ workflows:
           name: 'build-nginx'
           requires:
             - test
-          account-url: "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com"
+          account-url: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
           dockerfile: 'containers/nginx/Dockerfile'
           path: 'containers/nginx/'
           repo: '${MY_APP_PREFIX_NGINX}'

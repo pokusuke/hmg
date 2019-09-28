@@ -64,8 +64,7 @@ workflows:
   version: 2.1
   build-and-deploy:
     jobs:
-      - test:
-        context: hmg
+      - test
       - aws-ecr/build_and_push_image:
           requires:
             - test

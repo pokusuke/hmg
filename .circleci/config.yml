@@ -71,7 +71,7 @@ workflows:
             - test
           account-url: AWS_ECR_ACCOUNT_URL
           extra-build-args: '--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}'
-          repo: MY_APP_PREFIX_RAILS
+          repo: "${MY_APP_PREFIX_RAILS}"
           region: AWS_REGION
           tag: "${CIRCLE_SHA1}"
       - aws-ecr/build-and-push-image:
@@ -81,9 +81,9 @@ workflows:
           account-url: AWS_ECR_ACCOUNT_URL
           dockerfile: 'containers/nginx/Dockerfile'
           path: 'containers/nginx/'
-          repo: MY_APP_PREFIX_NGINX
+          repo: "${MY_APP_PREFIX_NGINX}"
           region: AWS_REGION
-          tag: '${CIRCLE_SHA1}'
+          tag: "${CIRCLE_SHA1}"
       - aws-ecs/deploy-service-update:
           requires:
             - build-rails-app

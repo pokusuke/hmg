@@ -90,4 +90,4 @@ workflows:
             - build-nginx
           family: 'hmg-service'
           cluster-name: 'hmg-cluster'
-          container-image-name-updates: 'container=hmg-service,tag=${CIRCLE_SHA1}'         
+          container-image-name-updates: 'container=hmg_web,tag=${CIRCLE_SHA1},container=hmg_nginx,tag=${CIRCLE_SHA1}'         

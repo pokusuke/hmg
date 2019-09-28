@@ -45,4 +45,4 @@ ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY $RAILS_MASTER_KEY
 
 RUN RAILS_ENV=production bundle exec rake assets:precompile
-CMD ["bundle", "exec", "rails", "s", "puma", "-b", "0.0.0.0","-e", "production"]
+CMD ["bundle", "exec", "rails", "s", "puma", "-e", "production"]

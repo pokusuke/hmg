@@ -1,15 +1,8 @@
 version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@0.0.4
+  aws-ecs: circleci/aws-ecs@0.0.10
 jobs:
-  #checkout_code:
-  #  docker:
-  #    - image: circleci/ruby:2.6.3-node-browsers-legacy
-  #  working_directory: ~/hmg
-  #  steps:
-  #    - checkout
-  #    - save_cache:
-  #        key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
-  #        paths:
-  #          - ~/hmg
   test:
     docker:
       - image: circleci/ruby:2.6.3-node-browsers-legacy
@@ -69,10 +62,30 @@ jobs:
 
 workflows:
   version: 2.1
-  test_and_deploy:
+  build-and-deploy:
     jobs:
-      #- checkout_code
       - test:
-          context: hmg
-          #requires:
-          #  - checkout_code
+        context: hmg
+      - aws-ecr/build_and_push_image:
+          requires:
+            - test
+          account-url: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
+          extra-build-args: '--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}'
+          repo: '${MY_APP_PREFIX_RAILS}'
+          region: '${AWS_REGION}'
+          tag: '${CIRCLE_SHA1}'
+      - aws-ecr/build_and_push_image:
+          requires:
+            - test
+          account-url: '${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com'
+          dockerfile: 'containers/nginx/Dockerfile'
+          path: 'containers/nginx/'
+          repo: '${MY_APP_PREFIX_NGINX}'
+          region: '${AWS_REGION}'
+          tag: '${CIRCLE_SHA1}'
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build_and_push_image
+          family: 'hmg-service'
+          cluster-name: 'hmg-cluster'
+          container-image-name-updates: 'container=hmg-service,tag=${CIRCLE_SHA1}'         

@@ -86,7 +86,8 @@ workflows:
           tag: '${CIRCLE_SHA1}'
       - aws-ecs/deploy-service-update:
           requires:
-            - aws-ecr/build_and_push_image
+            - build-rails-app
+            - build-nginx
           family: 'hmg-service'
           cluster-name: 'hmg-cluster'
           container-image-name-updates: 'container=hmg-service,tag=${CIRCLE_SHA1}'         

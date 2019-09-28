@@ -3,6 +3,7 @@ RUN apk --update add --virtual build-dependencies \
     build-base \
     curl-dev \
     mysql-dev \
+    nodejs \
     linux-headers
 RUN gem install bundler
 WORKDIR /tmp
@@ -10,6 +11,7 @@ COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 ENV BUNDLE_JOBS=4
 RUN bundle install
+
 RUN apk del build-dependencies
 
 
@@ -20,6 +22,7 @@ RUN apk --update add \
     bash \
     nodejs \
     mysql-dev \
+    yarn \
     tzdata
 RUN gem install bundler
 
@@ -44,6 +47,5 @@ ENV RAILS_ENV production
 ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY $RAILS_MASTER_KEY
 
-RUN npm install
 RUN RAILS_ENV=production bundle exec rake assets:precompile
 CMD ["bundle", "exec", "rails", "s", "puma", "-e", "production"]

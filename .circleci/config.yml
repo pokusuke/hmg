@@ -1,7 +1,7 @@
-version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@6.4.0
   aws-ecs: circleci/aws-ecs@0.0.11
+version: 2.1  
 jobs:
   test:
     docker:
@@ -61,11 +61,10 @@ jobs:
           destination: test-results
 
 workflows:
-  version: 2.1
   build-and-deploy:
     jobs:
       - test
-      - aws-ecr/build_and_push_image:
+      - aws-ecr/build-and-push-image:
           name: 'build-rails-app'
           requires:
             - test
@@ -74,7 +73,7 @@ workflows:
           repo: '${MY_APP_PREFIX_RAILS}'
           region: '${AWS_REGION}'
           tag: '${CIRCLE_SHA1}'
-      - aws-ecr/build_and_push_image:
+      - aws-ecr/build-and-push-image:
           name: 'build-nginx'
           requires:
             - test

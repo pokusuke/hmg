@@ -15,7 +15,7 @@ RUN bundle install
 RUN apk del build-dependencies
 
 
-
+#
 FROM ruby:2.6.3-alpine
 ENV LANG ja_JP.UTF-8
 RUN apk --update add \

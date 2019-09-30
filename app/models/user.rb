@@ -13,7 +13,9 @@ class User < ApplicationRecord
     if remove_img
       self.remove_avatar_path!
     end
+    self.nick_name ||= self.name
   end
+
   # バリデーション
   # email
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze

@@ -12,7 +12,8 @@
 
 
 ### アプリケーション本番環境構成
-https://user-images.githubusercontent.com/1914543/65856224-02081c00-e39c-11e9-85c9-25897ddf09c5.png
+![アプリケーション構成図](https://user-images.githubusercontent.com/1914543/65856224-02081c00-e39c-11e9-85c9-25897ddf09c5.png "構成図")
+
 
 ### アプリケーション機能一覧
 * ログイン・ログアウト機能（アクティベーション）

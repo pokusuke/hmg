@@ -4,6 +4,19 @@ class Event < ApplicationRecord
   belongs_to :pref, foreign_key: 'pref_id'
   has_many :event_apps, dependent: :destroy
 
+  # 追加のattribute
+  attribute :remove_img1, :boolean
+  attribute :remove_img2, :boolean
+  attribute :remove_img3, :boolean
+  attribute :remove_img4, :boolean
+
+  before_save do
+    self.remove_photo_url1! if remove_img1
+    self.remove_photo_url2! if remove_img2
+    self.remove_photo_url3! if remove_img3
+    self.remove_photo_url4! if remove_img4
+  end
+  
   # バリデーション
   validates :event_name, presence: true, length: { maximum: 255 }
   validates :event_date, presence: true

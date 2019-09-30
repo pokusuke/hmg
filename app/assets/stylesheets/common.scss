@@ -202,8 +202,8 @@ body{
     background-color: $link_color;
     color:#fff;
     width:300px;
-    height:50px;
-    line-height:50px;
+    height:35px;
+    line-height:35px;
     display:block;
     margin-top:10px;
     margin-bottom:10px;
@@ -220,15 +220,16 @@ body{
     text-align: center;
     color:#fff;
     width:100px;
-    height:50px;
-    line-height:50px;
+    height:35px;
+    line-height:35px;
     display:block;
     margin-top:10px;
     margin-bottom:10px;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: 0.3s;
     font-weight: bold;
     font-size:12px;
+    margin: 10px auto;
   }
   .btn-min:hover{
     opacity: 0.8;
@@ -787,4 +788,17 @@ a.msg-item-link{
 .store-new{
   width:300px;
   margin: 0 auto;
+}
+
+.prev-img{
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  display: none;
+  &.show{
+    display:block;
+  }
+}
+.event-img{
+  margin: auto 0;
 }

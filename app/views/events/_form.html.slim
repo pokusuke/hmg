@@ -54,24 +54,52 @@
         span.form-error= @event.errors.full_messages_for(:event_detail)[0]         
     .form-group
       span.label= f.label "画像1"
-      = f.file_field :photo_url1
+      - if @event.photo_url1?
+        =image_tag @event.photo_url1.url,:class => 'prev-img show'
+      - else
+        =image_tag '', :class => 'prev-img'     
+      = f.file_field :photo_url1, :class => 'input-file'
+      = f.hidden_field :remove_img1, :value => false, :class => 'remove-img'
+      = f.button "画像クリア",type: :button, :class => 'img-clear'
       - if @event.errors[:photo_url1].any?
-        span.form-error= @event.errors.full_messages_for(:photo_url1)[0]        
+        span.form-error= @event.errors.full_messages_for(:photo_url1)[0]
+    
     .form-group
       span.label= f.label "画像2"
-      = f.file_field :photo_url2
+      - if @event.photo_url2?
+        =image_tag @event.photo_url2.url,:class => 'prev-img show'
+      - else
+        =image_tag '', :class => 'prev-img'         
+      = f.file_field :photo_url2, :class => 'input-file'
+      = f.hidden_field :remove_img2, :value => false, :class => 'remove-img'
+      = f.button "画像クリア",type: :button, :class => 'img-clear'
       - if @event.errors[:photo_url2].any?
-        span.form-error= @event.errors.full_messages_for(:photo_url2)[0]        
+        span.form-error= @event.errors.full_messages_for(:photo_url2)[0]
+
     .form-group
       span.label= f.label "画像3"
-      = f.file_field :photo_url3
+      - if @event.photo_url3?
+        =image_tag @event.photo_url3.url,:class => 'prev-img show'
+      - else
+        =image_tag '', :class => 'prev-img'         
+      = f.file_field :photo_url3, :class => 'input-file'
+      = f.hidden_field :remove_img3, :value => false, :class => 'remove-img'
+      = f.button "画像クリア",type: :button, :class => 'img-clear' 
       - if @event.errors[:photo_url3].any?
         span.form-error= @event.errors.full_messages_for(:photo_url3)[0]        
+    
     .form-group
       span.label= f.label "画像4"
-      = f.file_field :photo_url4 
+      - if @event.photo_url4?
+        =image_tag @event.photo_url4.url,:class => 'prev-img show'
+      - else
+        =image_tag '', :class => 'prev-img'         
+      = f.file_field :photo_url4, :class => 'input-file'
+      = f.hidden_field :remove_img4, :value => false, :class => 'remove-img'
+      = f.button "画像クリア",type: :button, :class => 'img-clear'
       - if @event.errors[:photo_url4].any?
-        span.form-error= @event.errors.full_messages_for(:photo_url4)[0]        
+        span.form-error= @event.errors.full_messages_for(:photo_url4)[0]   
+
     .form-group
       span.label= f.label "公開する"
       = f.select :event_published_flg, options_for_select(Event.event_published_flgs)

@@ -7,15 +7,22 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   mount_uploader :avatar_path, AvatarUploader
 
-  # ##バリデーション
-  # #email
+  attribute :remove_img, :boolean
+
+  before_save do
+    if remove_img
+      self.remove_avatar_path!
+    end
+  end
+  # バリデーション
+  # email
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :name, presence: true
 
-  # #パスワード
+  # パスワード
   # has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
@@ -26,4 +33,6 @@ class User < ApplicationRecord
 
     BCrypt::Password.new(digest).is_password?(token)
   end
+
+
 end

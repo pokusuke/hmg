@@ -22,8 +22,13 @@ div.content
       .form-group
         = f.label "プロフィール画像"
         br
-        = image_tag @user.avatar_path.url if @user.avatar_path?
+        -if @user.avatar_path?
+          = image_tag @user.avatar_path.url, :class => 'prev-img show' if @user.avatar_path?
+        -else
+          = image_tag '', :class => 'prev-img hide'
         br
         br
-        = f.file_field :avatar_path
+        = f.file_field :avatar_path, :class => 'input-file'
+        = f.hidden_field :remove_img, :value => false, :class => 'remove-img'
+        = f.button "画像クリア",type: :button, :class => 'img-clear'
       = f.submit "保存"

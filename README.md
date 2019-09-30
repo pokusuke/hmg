@@ -46,7 +46,3 @@
 * CircleCI
 * Google Maps Javascript API
 
-### 依存バージョン
-* Ruby: 2.6.3
-* Rails: 5.2.3
-

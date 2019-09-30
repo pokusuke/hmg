@@ -3,7 +3,7 @@
 ハンドメイドに関するイベント(フリーマケーットやワークショップ)を管理するアプリケーションです。
 このアプリの利用ユーザの種類は下記の３種類を想定しています。
 * イベントの主催者
-  * ハンドメインメイドイベントの作成。出店者の募集。
+  * ハンドメイドイベントの作成。出店者の募集。
 * イベントの出店者 (作家)
   * 主催者のイベントへの応募
   * 出店情報の管理
@@ -29,12 +29,24 @@
 
 
 ### 使用技術一覧
-* Ruby on Rails
-* MySQL
-* Rspec
+* Ruby: 2.6.3
+* Rails: 5.2.3
 * Docker
-* AWS(ECR/ECS,RDS,EC2,VPC,Route53,SES,IAM,ALB,ACM)
+* Nginx
+* AWS
+  * ECS/ECR
+  * RDS(mysql
+  * EC2
+  * S3
+  * VPC
+  * Route53
+  * SES
+  * ALB
+  * ACM
 * CircleCI
 * Google Maps Javascript API
 
+### 依存バージョン
+* Ruby: 2.6.3
+* Rails: 5.2.3
 

@@ -36,16 +36,16 @@ WORKDIR $APP_ROOT
 
 ADD . $APP_ROOT
 
-# Expose volumes to frontend
-# VOLUME /app/public
-# VOLUME /app/tmp
-
-EXPOSE  3000
-
 ENV RAILS_ENV production
 
 ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY $RAILS_MASTER_KEY
 
 RUN RAILS_ENV=production bundle exec rake assets:precompile
+
+# Expose volumes to frontend
+VOLUME /app/public
+VOLUME /app/tmp
+EXPOSE  3000
+
 CMD ["bundle", "exec", "rails", "s", "puma", "-e", "production"]

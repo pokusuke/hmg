@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create destroy]
-  PER = 10
+  PER = 9
   def index
     if params[:commit]
       @event_date_from = Time.zone.local(params['event_date_from(1i)'].to_i, params['event_date_from(2i)'].to_i, params['event_date_from(3i)'].to_i)

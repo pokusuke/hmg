@@ -737,6 +737,9 @@ a.msg-item-link{
 
 .pagination{
   overflow: hidden;
+  clear: both;
+  margin-bottom:10px;
+  padding:10px;
   .page,.next,.last,.prev,.first{
     width:30px;
     height:30px;
@@ -748,6 +751,14 @@ a.msg-item-link{
     margin-left:15px;
   }
   .next,.last,.prev,.first{
+    a{
+      display:block;
+      box-sizing: border-box;
+      width: 40px;
+      height:30px;
+      line-height:30px;
+      font-size:12px; 
+    }
     a:hover{
       opacity:0.6;
     }
@@ -757,6 +768,7 @@ a.msg-item-link{
       display:block;
       border:1px solid #aaa;
       box-sizing: border-box;
+      width: 30px;
       height:30px;
       line-height:30px;
       

@@ -1,3 +1,6 @@
+####################
+# first stage build
+####################
 FROM ruby:2.6.3-alpine as builder
 RUN apk --update add --virtual build-dependencies \
     build-base \
@@ -14,8 +17,9 @@ RUN bundle install
 
 RUN apk del build-dependencies
 
-
-#
+####################
+# final stage build
+####################
 FROM ruby:2.6.3-alpine
 ENV LANG ja_JP.UTF-8
 RUN apk --update add \

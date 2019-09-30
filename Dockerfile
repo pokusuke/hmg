@@ -37,8 +37,8 @@ WORKDIR $APP_ROOT
 ADD . $APP_ROOT
 
 # Expose volumes to frontend
-VOLUME /app/public
-VOLUME /app/tmp
+# VOLUME /app/public
+# VOLUME /app/tmp
 
 EXPOSE  3000
 

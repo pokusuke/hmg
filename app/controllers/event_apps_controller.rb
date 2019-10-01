@@ -1,7 +1,7 @@
 class EventAppsController < ApplicationController
   before_action :authenticate_user!, only: %i[index create destroy]
   def index
-    @event_apps = EventApp.where(user_id: current_user.id).includes(:event).order("events.event_date desc")
+    @event_apps = EventApp.where(user_id: current_user.id).includes(:event).order('events.event_date desc')
   end
 
   def create

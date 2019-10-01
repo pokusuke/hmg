@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 describe 'メッセージのシステムテスト', type: :system do
-  let(:user1) { FactoryBot.create(:user, name: 'ユーザ1',nick_name: 'ユーザ1') }
-  let!(:user2) { FactoryBot.create(:user, name: 'ユーザ2',nick_name: 'ユーザ2') }
-  let!(:user3) { FactoryBot.create(:user, name: 'ユーザ3',nick_name: 'ユーザ3') }
+  let(:user1) { FactoryBot.create(:user, name: 'ユーザ1', nick_name: 'ユーザ1') }
+  let!(:user2) { FactoryBot.create(:user, name: 'ユーザ2', nick_name: 'ユーザ2') }
+  let!(:user3) { FactoryBot.create(:user, name: 'ユーザ3', nick_name: 'ユーザ3') }
 
   before do
-     visit new_user_session_path
-     fill_in 'user_email', with: login_user.email
-     fill_in 'user_password', with: login_user.password
-     click_button 'ログイン'
+    visit new_user_session_path
+    fill_in 'user_email', with: login_user.email
+    fill_in 'user_password', with: login_user.password
+    click_button 'ログイン'
   end
 
   describe 'メッセージ送信先ユーザ検索画面' do

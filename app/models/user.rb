@@ -10,10 +10,8 @@ class User < ApplicationRecord
   attribute :remove_img, :boolean
 
   before_save do
-    if remove_img
-      self.remove_avatar_path!
-    end
-    self.nick_name ||= self.name
+    remove_avatar_path! if remove_img
+    self.nick_name ||= name
   end
 
   # バリデーション
@@ -35,6 +33,4 @@ class User < ApplicationRecord
 
     BCrypt::Password.new(digest).is_password?(token)
   end
-
-
 end

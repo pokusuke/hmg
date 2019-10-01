@@ -63,9 +63,12 @@ jobs:
 workflows:
   build-and-deploy:
     jobs:
-      - test
+      - test:
+          filters:
+            branches:
+              only:
+                - master
       - aws-ecr/build-and-push-image:
-          #
           name: 'build-rails-app'
           requires:
             - test

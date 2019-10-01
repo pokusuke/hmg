@@ -1,9 +1,9 @@
-div.content
+.content
   p.back-to
     | <a href="#{msgs_index_path}"><i class="fas fa-arrow-left"></i></a>
-  div.content-item
-    div.content
-      h2.page-title = "#{@recv_user.nick_name}"
+  .content-item
+    .content
+      h2.page-title = " #{@recv_user.nick_name} "
       ul.msg-list#chat-index
         - @msgs.each do |msg|
           li.msg-item
@@ -20,7 +20,7 @@ div.content
                   span.msg-content
                     =msg.msg
                     br
-                    span.msg-img=image_tag msg.photo_url.url
+                    span.msg-img = image_tag msg.photo_url.url
               - else
                 .msg-sender-img
                   - if msg.sender.avatar_path?
@@ -30,12 +30,12 @@ div.content
                 .msg-container
                   =msg.sender.nick_name
                   br
-                  span.msg-content= msg.msg
-      =form_with model: Msg.new,url: "/msgs/#{params[:id]}" do |f|
+                  span.msg-content = msg.msg
+      =form_with model: Msg.new, url: "/msgs/#{params[:id]}" do |f|
         =f.label 'メッセージ'
         br
-        =f.text_area :msg,{class:"msg"}
+        =f.text_area :msg, class: 'msg'
         br
-        =f.label "画像"
-        =f.file_field :photo_url ,{id:"file_input"}
-        =f.submit "送信",{id:"msg-submit"}
+        =f.label '画像'
+        =f.file_field :photo_url, id: 'file_input'
+        =f.submit '送信', id: 'msg-submit'

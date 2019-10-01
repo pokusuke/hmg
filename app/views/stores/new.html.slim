@@ -1,18 +1,18 @@
-div.content
+.content
   p.back-to
     | <a href="#{event_app_path(params[:event_app_id])}"><i class="fas fa-arrow-left"></i></a>
-  div.content-item
+  .content-item
     h2.page-title 出店情報の新規作成
-    = form_with model:@store,local:true,url:event_app_stores_path(@event_app_id) do |f|
+    = form_with model: @store, local: true, url: event_app_stores_path(@event_app_id) do |f|
       .form_group
         = f.label :name
         br
         = f.text_field :name
         - if @store.errors[:name].any?
-          span.form-error= @store.errors.full_messages_for(:name)[0]
+          span.form-error = @store.errors.full_messages_for(:name)[0]
       .form_group
-        = f.hidden_field :event_app_id, :value=>@event_app_id
+        = f.hidden_field :event_app_id, value: @event_app_id
         = f.label :store_desc
         br
-        = f.text_area :store_desc, :class => 'desc'
-      = f.submit "登録"
+        = f.text_area :store_desc, class: 'desc'
+      = f.submit '登録'

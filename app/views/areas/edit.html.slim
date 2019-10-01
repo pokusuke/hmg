@@ -1,8 +1,8 @@
 section
   h2 エリアの編集
-  = form_with model:@area,local:true do |f|
+  = form_with model: @area, local: true do |f|
     .form_group
       = f.label 'エリア名'
       br
       = f.text_field :area_name
-    = f.submit "登録"
+    = f.submit '登録'

@@ -1,20 +1,20 @@
 section.content
   h2.page-title ユーザ登録
-  = form_with model:@user,local:true do |f|
+  = form_with model: @user, local: true do |f|
     .form-group
-      = f.label "ユーザ名"
+      = f.label 'ユーザ名'
       br
       = f.text_field :name
     .form-group
-      = f.label "メールアドレス"
+      = f.label 'メールアドレス'
       br
       = f.text_field :email
     .form-group
-      = f.label "パスワード"
+      = f.label 'パスワード'
       br
       = f.password_field :password
     .form-group
-      = f.label "パスワード確認"
+      = f.label 'パスワード確認'
       br
       = f.password_field :password_confirmation
-    = f.submit "登録"
+    = f.submit '登録'

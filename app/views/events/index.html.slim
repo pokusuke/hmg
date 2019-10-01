@@ -1,48 +1,48 @@
 section.search-config
   h3.search-config-title エリア・日付で絞り込む
-  = form_with local:true,method: :get do |f|
+  = form_with local: true, method: :get do |f|
       table
         tr
-          th= f.label :都道府県
+          th = f.label :都道府県
 
           - if @pref
-            td.select-pref  = f.collection_select :pref_id, Pref.all, :id, :pref_name, :prompt=>"選択してください", selected: @pref.id
+            td.select-pref = f.collection_select :pref_id, Pref.all, :id, :pref_name, prompt: '選択してください', selected: @pref.id
           - else
-            td.select-pref  = f.collection_select :pref_id, Pref.all, :id, :pref_name, :prompt=>"選択してください"
+            td.select-pref = f.collection_select :pref_id, Pref.all, :id, :pref_name, prompt: '選択してください'
         tr
-          th= f.label :開催日
-          td.select-date 
+          th = f.label :開催日
+          td.select-date
             |
-              #{f.date_select :event_date_from, selected:@event_date_from, use_month_numbers: true,date_separator: '/'}
-                <br> 
+              #{f.date_select :event_date_from, selected: @event_date_from, use_month_numbers: true, date_separator: '/'}
+                <br>
                 <span> 〜 </span>
                 <br>
-              #{f.date_select :event_date_to, selected:@event_date_to, use_month_numbers: true, include_blank:true, date_separator: '/'}
-      = f.submit "検索する"
-     
+              #{f.date_select :event_date_to, selected: @event_date_to, use_month_numbers: true, include_blank: true, date_separator: '/'}
+      = f.submit '検索する'
+
 section.event-result
   - if @pref
-    h2.page-title= "#{@pref.pref_name}のハンドメイドイベント"
+    h2.page-title = "#{@pref.pref_name}のハンドメイドイベント"
   - else
-    h2.page-title= "全国のハンドメイドイベント" 
+    h2.page-title = '全国のハンドメイドイベント'
   -if @events.present?
     -@events.each do |event|
-      =link_to event_path(event) do 
+      = link_to event_path(event) do
         dl.event
           dt
-            p= event.event_name
+            p = event.event_name
           dd
             .list-img
               - if event.photo_url1?
-                p.title-img=image_tag event.photo_url1.url,:class => 'img-thum'
+                p.title-img = image_tag event.photo_url1.url, class: 'img-thum'
               - else
-                p.title-img=image_tag 'no-image.png',:class => 'img-thum'        
+                p.title-img = image_tag 'no-image.png', class: 'img-thum'
             .list-desc
-              p= "開催日時: #{I18n.l event.event_date, format: :full_date}"
-              p= "開催場所: #{event.pref.pref_name}"
-              p= "主催者：　#{event.user.nick_name}"
+              p = "開催日時: #{I18n.l event.event_date, format: :full_date}"
+              p = "開催場所: #{event.pref.pref_name}"
+              p = "主催者：　#{event.user.nick_name}"
             .detail-icon
-              = icon 'fas','chevron-right'
+              = icon 'fas', 'chevron-right'
 
   -else
     p 検索結果がありませんでした。

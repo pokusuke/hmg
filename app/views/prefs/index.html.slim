@@ -1,5 +1,5 @@
 section
-  = link_to "新規作成",new_pref_path
+  = link_to '新規作成', new_pref_path
   br
   table
     thead
@@ -7,12 +7,12 @@ section
       th 都道府県コード
       th 都道府県名
       th 編集
-      th 削除    
+      th 削除
     tbody
       - @prefs.each do |pref|
         tr
           td = pref.area.area_name
           td = pref.pref_id
           td = pref.pref_name
-          td = link_to "編集",edit_pref_path(pref)
-          td = link_to "削除",area_path(pref),method: :delete
+          td = link_to '編集', edit_pref_path(pref)
+          td = link_to '削除', area_path(pref), method: :delete

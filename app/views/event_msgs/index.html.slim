@@ -1,12 +1,11 @@
-
-div.content
+.content
   p.back-to
     | <a href="#{event_app_path(@event_app)}"><i class="fas fa-arrow-left"></i></a>
-  div.content-item
+  .content-item
     h2.page-title = "チャット　(#{@event.event_name})"
     ul.msg-list
       - @event_msgs.each do |event_msg|
-        =link_to url_for(:controller=>'event_msg_reps',:action=>'new',event_msg_id: event_msg.id),:class=>'msg-item-link' do 
+        =link_to url_for(controller: 'event_msg_reps', action: 'new', event_msg_id: event_msg.id), class: 'msg-item-link' do
           li.msg-item
             .table-row
             -if event_msg.photo_url.url
@@ -21,7 +20,7 @@ div.content
                 span.msg-content
                   =event_msg.msg
                   br
-                  span.msg-img=image_tag event_msg.photo_url.url
+                  span.msg-img = image_tag event_msg.photo_url.url
             -else
               .msg-sender-img
                 - if event_msg.user.avatar_path?
@@ -31,22 +30,22 @@ div.content
               .msg-container
                 = event_msg.user.nick_name
                 br
-                span.msg-content= event_msg.msg
+                span.msg-content = event_msg.msg
             - if event_msg.event_msg_reps.present?
-              div.table-row
-                div.msg-rep-num= ""
-                div.msg-rep-num
+              .table-row
+                .msg-rep-num = ''
+                .msg-rep-num
                   |
                     <i class="far fa-comment"></i>
                     #{event_msg.event_msg_reps.length}件の返信
 
-    = form_with model:@event_msg,local:true do |f|
+    = form_with model: @event_msg, local: true do |f|
         .form-group
-          = f.hidden_field :event_id, :value=>@event_id
+          = f.hidden_field :event_id, value: @event_id
           = f.label :msg
           br
-          = f.text_area :msg,{class:"msg"}
+          = f.text_area :msg, class: 'msg'
           br
-          =f.label "画像"
-          =f.file_field :photo_url ,{id:"file_input"}      
-        = f.submit "メッセージを送信"
+          =f.label '画像'
+          =f.file_field :photo_url, id: 'file_input'
+        = f.submit 'メッセージを送信'

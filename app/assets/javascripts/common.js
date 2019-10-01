@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load',function(){
   // flashのフェードアウト
-  $('.flash-msg').fadeOut(2000)
+  $('.flash-msg').fadeOut(5000)
 
   //画像プレビュー
   $inputFile = $('.input-file');

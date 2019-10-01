@@ -8,8 +8,12 @@
     -@event_apps.each do |event_app|
       =link_to event_app_path(event_app) do
         dl.event
-          dt
-            p = event_app.event.event_name
+          dt 
+            - if event_app.event.user.id == current_user.id
+              p 
+                | #{event_app.event.event_name} <span class='owner'>主催</span>
+            - else
+              p = event_app.event.event_name
           dd
             - if event_app.event.photo_url1?
               p.title-img = image_tag event_app.event.photo_url1.url, class: 'img-thum'

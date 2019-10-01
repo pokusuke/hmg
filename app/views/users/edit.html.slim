@@ -13,7 +13,10 @@ div.content
       .form-group
         = f.label "email"
         br
-        = f.text_field :email      
+        -if current_user.email == 'test@example.com'
+          = f.text_field :email, :disabled => true
+        -else
+          = f.text_field :email     
       .form-group
         = f.label "自己紹介"
         br

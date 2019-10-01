@@ -10,4 +10,5 @@ div.content
     br
     h3 プロフィール
     br
-    p= simple_format(text_url_to_link(@user.prof))
+    - unless @user.prof.nil?
+      p= simple_format(text_url_to_link(@user.prof))

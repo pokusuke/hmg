@@ -24,7 +24,7 @@
 * イベント出店情報機能
 * 参加イベント一覧機能
 * イベントグループチャット機能
-* ユーザ間メッセージチャット機能
+* ユーザ間メッセージチャット機能(action cableを利用)
 * ユーザ検索機能
 
 
@@ -44,5 +44,6 @@
   * ALB
   * ACM
 * CircleCI
+  * CI/CD
 * Google Maps Javascript API
 

@@ -6,6 +6,7 @@ RUN apk --update add --virtual build-dependencies \
     build-base \
     curl-dev \
     mysql-dev \
+    imagemagick \
     nodejs \
     linux-headers
 RUN gem install bundler

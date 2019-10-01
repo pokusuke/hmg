@@ -1,14 +1,14 @@
 section
-  = link_to "新規作成",new_area_path
+  = link_to '新規作成', new_area_path
   br
   table
     thead
       th エリア名
       th 編集
-      th 削除    
+      th 削除
     tbody
       - @areas.each do |area|
         tr
           td = area.area_name
-          td = link_to "編集",edit_area_path(area)
-          td = link_to "削除",area_path(area),method: :delete
+          td = link_to '編集', edit_area_path(area)
+          td = link_to '削除', area_path(area), method: :delete

@@ -1,20 +1,20 @@
-div.content
-  p.event-new= link_to 'イベントを新規作成',new_event_path, {:class => "btn"}
+.content
+  p.event-new = link_to 'イベントを新規作成', new_event_path, class: 'btn'
   br
   section.event-app-list
     h2.page-title 参加イベント一覧
     -if @event_apps.empty?
       p 参加予定のイベントはありません。
     -@event_apps.each do |event_app|
-      =link_to event_app_path(event_app) do 
+      =link_to event_app_path(event_app) do
         dl.event
           dt
-            p= event_app.event.event_name
+            p = event_app.event.event_name
           dd
             - if event_app.event.photo_url1?
-              p.title-img=image_tag event_app.event.photo_url1.url,:class => 'img-thum'
+              p.title-img = image_tag event_app.event.photo_url1.url, class: 'img-thum'
             - else
-              p.title-img=image_tag 'no-image.png',:class => 'img-thum'      
-            p= "開催日時: #{event_app.event.event_date.strftime('%Y年%m月%d日')}"
-            p= "主催者：　#{event_app.event.user.name}"
-  br        
+              p.title-img = image_tag 'no-image.png', class: 'img-thum'
+            p = "開催日時: #{event_app.event.event_date.strftime('%Y年%m月%d日')}"
+            p = "主催者：　#{event_app.event.user.name}"
+  br

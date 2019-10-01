@@ -1,10 +1,10 @@
 section
   h2 エリアの編集
-  = form_with model:@pref,local:true do |f|
+  = form_with model: @pref, local: true do |f|
     .form_group
       =f.label 'エリア'
       br
-      =f.collection_select :area_id,Area.all,:id,:area_name
+      =f.collection_select :area_id, Area.all, :id, :area_name
     .form_group
       = f.label '都道府県コード'
       br
@@ -13,4 +13,4 @@ section
       = f.label '都道府県名'
       br
       = f.text_field :pref_name
-    = f.submit "登録"
+    = f.submit '登録'

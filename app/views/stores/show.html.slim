@@ -1,10 +1,10 @@
-div.content
- div.content-item
-  h2.page-title= @store.name
+.content
+ .content-item
+  h2.page-title = @store.name
   table.event-show
     tr
       th 出店者
-      td= link_to @store.event_app.user.name,{:controller=>'users',:action=>'show',id: @store.event_app.user}
+      td = link_to @store.event_app.user.name, controller: 'users', action: 'show', id: @store.event_app.user
     tr
       th 出店概要
-      td= text_url_to_link(simple_format(@store.store_desc))
+      td = text_url_to_link(simple_format(@store.store_desc))

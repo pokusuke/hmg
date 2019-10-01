@@ -1,12 +1,12 @@
 h1 宛先ユーザ選択
-=form_with model: User.new,url:'/msgs/query_user' do |f|
+=form_with model: User.new, url: '/msgs/query_user' do |f|
   =f.label '名前'
   =f.text_field :name
-  =f.submit "検索"
+  =f.submit '検索'
 
 hr
 ul.msg-user-list
   - unless @query_users.nil?
     = puts @query_users.length
     - @query_users.each do |query_user|
-      li= link_to query_user.name , "#"
+      li = link_to query_user.name, '#'

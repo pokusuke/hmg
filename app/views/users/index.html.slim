@@ -6,7 +6,6 @@ table
     th = User.human_attribute_name(:email)
     th = User.human_attribute_name(:avatar_path)
     th = User.human_attribute_name(:created_at)
-    
   tbody
     - @users.each do |user|
       tr
@@ -15,4 +14,4 @@ table
         td = user.email
         td = user.avatar_path
         td = user.created_at
-        td = link_to '削除',user_path(user), method: :delete
+        td = link_to '削除', user_path(user), method: :delete

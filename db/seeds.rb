@@ -74,8 +74,8 @@ User.create!(
   [
     { id: 1, name: 'test', email: 'test@example.com', nick_name: 'test', password: 'password', confirmed_at: Time.zone.now, prof: 'testです。神奈川県を中心に活動しています。' },
     { id: 2, name: 'test2', email: 'test2@example.com', nick_name: 'test2', password: 'password', confirmed_at: Time.zone.now, prof: 'test2です。東京都西部を中心に活動しています。' },
-    { id: 3, name: 'test3', email: 'test3@example.com', nick_name: 'test3', password: 'password', confirmed_at: Time.zone.now, prof: 'test3です。よろしくお願いいたします。' }
-    { id: 3, name: 'test4', email: 'test4@example.com', nick_name: 'test4', password: 'password', confirmed_at: Time.zone.now, prof: 'test4です。よろしくお願いいたします。' }
+    { id: 3, name: 'test3', email: 'test3@example.com', nick_name: 'test3', password: 'password', confirmed_at: Time.zone.now, prof: 'test3です。よろしくお願いいたします。' },
+    { id: 4, name: 'test4', email: 'test4@example.com', nick_name: 'test4', password: 'password', confirmed_at: Time.zone.now, prof: 'test4です。よろしくお願いいたします。' }
   ]
 )
 

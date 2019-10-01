@@ -18,12 +18,14 @@ describe 'イベントのシステムテスト', type: :system do
     before do
       visit new_event_path
       fill_in 'イベント名', with: event_name
+      select event_published_flg, from: 'event_event_published_flg'
       select selected_pref, from: 'event_pref_id'
       click_button '登録する'
     end
 
-    context '正常な入力を行った場合' do
+    context '正常な入力を行った場合_公開' do
       let(:event_name) { 'テストイベント' }
+      let(:event_published_flg) { '公開' }
       let(:selected_pref) { 'A県' }
       it 'イベント一覧画面にリダイレクトされること' do
         expect(current_path).to eq(events_path)
@@ -39,9 +41,27 @@ describe 'イベントのシステムテスト', type: :system do
         expect(page).to have_content('テストイベント')
       end
     end
-
+    context '正常な入力を行った場合_下書き' do
+      let(:event_name) { 'テストイベント' }
+      let(:event_published_flg) { '下書き' }
+      let(:selected_pref) { 'A県' }
+      it 'イベント一覧画面にリダイレクトされること' do
+        expect(current_path).to eq(events_path)
+      end
+      it 'イベント一覧画面でイベントが追加されていないこと' do
+        expect(page).to_not have_content('テストイベント')
+      end
+      it '登録成功のメッセージが表示されていること' do
+        expect(find('.flash-msg')).to have_content('イベントを登録しました')
+      end
+      it '参加イベント画面で作成したイベントが表示されていること' do
+        visit event_apps_path
+        expect(page).to have_content('テストイベント')
+      end
+    end
     context '必須項目を入力しなかった場合' do
       let(:event_name) { nil }
+      let(:event_published_flg) { '公開' }
       let(:selected_pref) { '選択してください' }
 
       it '不正な入力のエラーメッセージが表示されいること' do

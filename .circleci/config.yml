@@ -69,6 +69,10 @@ workflows:
           name: 'build-rails-app'
           requires:
             - test
+          filters:
+            branches:
+              only:
+                - master
           account-url: AWS_ECR_ACCOUNT_URL
           extra-build-args: '--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}'
           repo: "${MY_APP_PREFIX_RAILS}"
@@ -78,6 +82,10 @@ workflows:
           name: 'build-nginx'
           requires:
             - test
+          filters:
+            branches:
+              only:
+                - master            
           account-url: AWS_ECR_ACCOUNT_URL
           dockerfile: 'containers/nginx/Dockerfile'
           path: 'containers/nginx/'
@@ -88,6 +96,10 @@ workflows:
           requires:
             - build-rails-app
             - build-nginx
+          filters:
+            branches:
+              only:
+                - master            
           family: 'hmg-service'
           cluster-name: 'hmg-cluster'
           container-image-name-updates: 'container=hmg_web,tag=${CIRCLE_SHA1},container=hmg_nginx,tag=${CIRCLE_SHA1}'         

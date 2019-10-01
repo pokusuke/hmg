@@ -586,6 +586,8 @@ Componentf
     font-weight: normal;
     background-color:#f6f5f4;
     text-align:left;
+    width: 27%;
+    text-align: center
   }
   td{
     text-align: center;
@@ -819,4 +821,14 @@ a.msg-item-link{
 }
 .event-img{
   margin: auto 0;
+}
+.owner{
+  display: inline-block;
+  background-color: $head-color;
+  font-size: 12px;
+  padding:3px;
+  line-height: 12px;
+  border-radius: 3px;
+  margin-left:5px;
+
 }

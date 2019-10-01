@@ -26,7 +26,7 @@
         span.form-error = @event.errors.full_messages_for(:place_detail)[0]
     .form-group
       span.label = f.label '出店者の募集'
-      = f.select :event_recruiting_flg, options_for_select(Event.event_recruiting_flgs)
+      = f.select :event_recruiting_flg, options_for_select(Event.event_recruiting_flgs, @event.event_recruiting_flg)
     .form-group.date-select
       span.label = f.label '募集受付開始日'
       = f.date_select :event_recruit_start_date, use_month_numbers: true, date_separator: '/'
@@ -102,5 +102,5 @@
 
     .form-group
       span.label = f.label '公開する'
-      = f.select :event_published_flg, options_for_select(Event.event_published_flgs)
+      = f.select :event_published_flg, options_for_select(Event.event_published_flgs, @event.event_published_flg)
     = f.submit '登録する'

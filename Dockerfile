@@ -27,6 +27,7 @@ RUN apk --update add \
     nodejs \
     mysql-dev \
     yarn \
+    imagemagick \
     tzdata
 RUN gem install bundler
 

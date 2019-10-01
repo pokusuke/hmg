@@ -1,8 +1,10 @@
 p
-  | Welcome 
+  | ご登録ありがとうございます。
   = @email
   | !
 p
-  | You can confirm your account email through the link below:
+  | 下記のリンクをクリックして、アカウントの登録を完了させてください。 
 p
-  = link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+  = link_to 'アカウントの認証', confirmation_url(@resource, confirmation_token: @token)
+p
+  | 運営：Handmade-Garden

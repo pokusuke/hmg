@@ -71,7 +71,7 @@ describe 'イベントのシステムテスト', type: :system do
         event_recruit_end_date: Date.current.in_time_zone
       )
     end
-    let(:event_app){ FactoryBot.create(:event_app, user: user1, event: edit_event) }
+    let(:event_app) { FactoryBot.create(:event_app, user: user1, event: edit_event) }
     before do
       visit edit_event_path(event_app.event)
       fill_in 'イベント名', with: event_name
@@ -114,7 +114,7 @@ describe 'イベントのシステムテスト', type: :system do
         event_recruit_end_date: Date.current.in_time_zone
       )
     end
-    let(:event_app){ FactoryBot.create(:event_app, user: user1, event: edit_event) }
+    let(:event_app) { FactoryBot.create(:event_app, user: user1, event: edit_event) }
     before do
       visit edit_event_path(event_app.event)
       click_link '削除する'

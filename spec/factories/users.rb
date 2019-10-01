@@ -9,6 +9,6 @@ FactoryBot.define do
     # 管理者
     trait :admin_user do
       admin true
-    end    
+    end
   end
 end

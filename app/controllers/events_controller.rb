@@ -111,7 +111,7 @@ class EventsController < ApplicationController
     attrs[:event_recruiting_flg] = attrs[:event_recruiting_flg]
     attrs[:event_date] = Time.zone.local(params[:event]['event_date(1i)'].to_i, params[:event]['event_date(2i)'].to_i, params[:event]['event_date(3i)'].to_i)
     attrs[:event_recruit_start_date] = Time.zone.local(params[:event]['event_recruit_start_date(1i)'].to_i, params[:event]['event_recruit_start_date(2i)'].to_i, params[:event]['event_recruit_start_date(3i)'].to_i)
-    attrs[:event_recruit_end_date] = Time.zone.local(params[:event]['event_recruit_end_date(1i)'].to_i, params[:event]['event_recruit_end_date(2i)'].to_i, params[:event]['event_recruit_end_date(3i)'].to_i) 
+    attrs[:event_recruit_end_date] = Time.zone.local(params[:event]['event_recruit_end_date(1i)'].to_i, params[:event]['event_recruit_end_date(2i)'].to_i, params[:event]['event_recruit_end_date(3i)'].to_i)
     attrs
   end
 end

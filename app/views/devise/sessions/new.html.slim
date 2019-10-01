@@ -1,8 +1,6 @@
 section.content
   div.content-item
     h2.page-title ログイン
-    - flash.each do |name, msg|
-      p.flash-msg.alert-error= msg    
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group
         = f.label :email

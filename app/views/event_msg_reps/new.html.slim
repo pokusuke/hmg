@@ -8,7 +8,7 @@
             -if @event_msg.photo_url.url
               .msg-sender-img
                 - if @event_msg.user.avatar_path?
-                  = image_tag @event_msg.user.avatar_path
+                  = image_tag @event_msg.user.avatar_path.url
                 - else
                   = image_tag 'no-image-human.png'
               .msg-container
@@ -21,7 +21,7 @@
             -else
               .msg-sender-img
                 - if @event_msg.user.avatar_path?
-                  = image_tag @event_msg.user.avatar_path
+                  = image_tag @event_msg.user.avatar_path.url
                 - else
                   = image_tag 'no-image-human.png'
               .msg-container
@@ -37,7 +37,7 @@
             -if event_msg_rep.photo_url.url
               .msg-sender-img
                 - if event_msg_rep.user.avatar_path?
-                  = image_tag event_msg_rep.user.avatar_path
+                  = image_tag event_msg_rep.user.avatar_path.url
                 - else
                   = image_tag 'no-image-human.png'
               .msg-container
@@ -50,7 +50,7 @@
             -else
               .msg-sender-img
                 - if event_msg_rep.user.avatar_path?
-                  = image_tag event_msg_rep.user.avatar_path
+                  = image_tag event_msg_rep.user.avatar_path.url
                 - else
                   = image_tag 'no-image-human.png'
               .msg-container

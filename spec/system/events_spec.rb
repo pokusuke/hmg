@@ -153,4 +153,24 @@ describe 'イベントのシステムテスト', type: :system do
       expect(page).to_not have_content(edit_event.event_name)
     end
   end
+
+  describe 'イベント一覧機能' do
+    let(:login_user) { user1 }
+    let!(:event_today) do
+      FactoryBot.create(
+        :event,
+        :event_today,
+        user: user1,
+        pref: pref
+      )
+    end
+    before do
+      visit events_path
+    end
+    context '初期表示' do
+      it '初期表示で、本日のイベントが表示されること' do
+        expect(page).to have_content(event_today.event_name)
+      end
+    end
+  end  
 end

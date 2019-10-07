@@ -14,5 +14,10 @@ FactoryBot.define do
     photo_url1 { 'test.com' }
     association :user
     association :pref
+    # 本日のイベント
+    trait :event_today do
+      event_name { 'Event Today' }
+      event_date { Date.current.in_time_zone }
+    end    
   end
 end

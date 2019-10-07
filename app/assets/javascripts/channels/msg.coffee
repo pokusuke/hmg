@@ -69,13 +69,9 @@ $(document).on 'click','#msg-submit',(event) ->
     text = $.trim($(".msg").val())
     has_text = if text.length > 0 then true else false
     picture = $("#file_input")
-    console.log("きてる？")
-    console.log(picture)
     has_picture = if picture.get(0).files.length > 0 then true else false
-    console.log(has_picture)
     if has_text or has_picture
       if has_picture
-        console.log("mkoko")
         file_name = picture.get(0).files[0].name
         reader = new FileReader()
         reader.readAsDataURL picture.get(0).files[0]
@@ -84,16 +80,12 @@ $(document).on 'click','#msg-submit',(event) ->
             msg: text,
             pic: reader.result
           }
-          console.log(message)
-          console.log(App.msg)
           App.msg.speak message 
       else
         message = {
           msg: text
           pic: ""
         }
-        console.log(message)
-        console.log(App.msg)
         App.msg.speak message
     $(".msg").val('')
     $("#file_input").val('')

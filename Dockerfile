@@ -23,6 +23,7 @@ RUN apk del build-dependencies
 ####################
 FROM ruby:2.6.3-alpine
 ENV LANG ja_JP.UTF-8
+ENV TZ=Asia/Tokyo
 RUN apk --update add \
     bash \
     nodejs \
@@ -41,7 +42,6 @@ RUN mkdir -p $APP_ROOT
 WORKDIR $APP_ROOT
 
 ADD . $APP_ROOT
-
 ENV RAILS_ENV production
 
 ARG RAILS_MASTER_KEY

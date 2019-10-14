@@ -2,7 +2,7 @@
 # first stage build
 ####################
 FROM ruby:2.6.3-alpine as builder
-RUN apk --update add --virtual build-dependencies \
+RUN apk --no-cache add --virtual build-dependencies \
     build-base \
     curl-dev \
     mysql-dev \
@@ -24,7 +24,7 @@ RUN apk del build-dependencies
 FROM ruby:2.6.3-alpine
 ENV LANG ja_JP.UTF-8
 ENV TZ=Asia/Tokyo
-RUN apk --update add \
+RUN apk --no-cache add \
     bash \
     nodejs \
     mysql-dev \

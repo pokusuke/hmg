@@ -27,7 +27,7 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'slim-rails'
 gem 'jquery-rails'
-gem 'carrierwave','~> 1.0'
+gem 'carrierwave','~> 1.3'
 gem 'carrierwave-data-uri'
 gem 'mini_magick'
 gem 'rails-i18n'
